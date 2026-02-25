@@ -1,0 +1,110 @@
+# UI Refinement - Manage Products Page
+
+Improve the aesthetic of the "Manage Products" page to move away from a "boxy" look and create a more premium, unified dashboard experience.
+
+## Proposed Changes
+
+### [Component] ManageProducts.jsx
+
+#### [MODIFY] [ManageProducts.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/ManageProducts.jsx)
+- **Layout Refactoring**:
+    - Use a more cohesive container that groups "Add New Item" and "All Products" naturally.
+    - Improve spacing and alignment between the form and the list.
+- **Enhanced Card Styles**:
+    - Softer shadows and more subtle borders for the `.glass` cards.
+    - Add a gradient header area or consistent padding to make it feel less like separate boxes.
+- **Premium Table Design**:
+    - Remove standard table borders.
+    - Use row separation with subtle backgrounds or borders.
+    - Add hover effects to rows.
+    - Style "Price" with a more prominent font or color.
+- **Button Styling**:
+    - Redesign "Edit" and "Delete" buttons to be cleaner.
+    - Use subtle color hints (e.g., light blue for edit, soft red for delete) instead of harsh backgrounds.
+- **Input Refinement**:
+    - Ensure all inputs have consistent padding and focus animations.
+    - Improve the "Add Product" button to feel more primary and impactful.
+
+---
+
+## [PHASE 2] Billing UI & UX Refinement
+
+Address feedback regarding input visibility, box sizing, and numerical input behavior.
+
+### [MODIFY] [Billing.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/Billing.jsx)
+
+- **Input Visibility**: (Already applied) Ensure inputs in the table have a subtle background and border.
+- **QTY Box Width**: Increase the width of the `qty-cell` to provide more space for larger quantities.
+- **Vanish Zero Refinement**: Ensure that all numerical inputs (Quantity, Price, Discount, Paid Today) clear the `0` value on focus for a smoother typing experience.
+
+### [MODIFY] [ManageProducts.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/ManageProducts.jsx)
+
+- **Input Visibility**: Apply similar border/background styling to `edit-input` for consistency.
+
+---
+
+---
+
+## [PHASE 4] Billing Refinement: Save Only
+
+Simplify the billing flow by removing the automatic print dialog and dedicated invoice.
+
+### [MODIFY] [Billing.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/Billing.jsx)
+
+- **Remove Printing Logic**:
+    - Remove `printData` state and related `useEffect`.
+    - Delete the hidden `#printable-invoice` component.
+- **Button Change**: Update button from "Save & Print Bill" to "Save Bill".
+
+---
+
+## [PHASE 5] Vendor Statement Printing
+
+Implement a comprehensive, printable "Statement of Account" for vendors that includes all historical purchases and payments.
+
+### [MODIFY] [VendorDetails.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/VendorDetails.jsx)
+
+- **Enhanced Statement**: 
+    - Ensure the "Statement of Account" contains:
+        - Overall Pending Balance (Prominent).
+        - Every bill (expanded with its items list).
+        - Every payment made after purchase.
+- **Header formatting**: Standardize for a professional look.
+
+---
+
+## [PHASE 6] Print Reliability & Robustness
+
+Address issues where print content might be cut off or missing details for long histories.
+
+### [MODIFY] [index.css](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/index.css)
+
+- **Print Flow**: Change `position: absolute` to `position: static` or `relative` for `.printable-statement` to allow content to flow naturally across multiple A4 pages.
+- **Compatibility**: Add `print-color-adjust` alongside `-webkit-print-color-adjust`.
+- **Page Breaks**: Add `page-break-inside: avoid` to table rows and sections to prevent unsightly splits.
+
+### [MODIFY] [VendorDetails.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/VendorDetails.jsx)
+
+- **Detailed Item Rendering**: Use a more structured list or table for items within each bill row, ensuring all item names and prices are clearly legible.
+- **Sectioning**: Clearly separate Purchase History and Payment History if a merged ledger is less intuitive, or improve the ledger headers to satisfy all "each shop details" requirements.
+
+---
+
+## [PHASE 7] Dynamic Print Filenames
+
+Improve the UX by ensuring "Print to PDF" uses a descriptive, unique filename.
+
+### [MODIFY] [VendorDetails.jsx](file:///c:/Users/kanam/./gemini/antigravity/scratch/wholesale-vendor-system/src/components/VendorDetails.jsx)
+
+- **Print Handler**: 
+    - Create a `handlePrint` function.
+    - Temporarily set `document.title` to `Statement_[ShopName]_[Date_Time]` before calling `window.print()`.
+    - Restore the original title after the print dialog opens.
+
+## Verification Plan
+
+### Manual Verification
+- Navigate to a Vendor with many transactions (multi-page history).
+- Click "Download Report (Print)".
+- Verify that the print preview shows *all* pages and *all* bill items.
+- Ensure no content is truncated at page margins.

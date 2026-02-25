@@ -1,0 +1,6 @@
+# Visibility Fix Checklist
+
+- [ ] Identify and fix placeholder visibility in "Manage Borrowers" modal
+    - [ ] Add CSS for `::placeholder` to [style.css](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/css/style.css)
+    - [ ] Verify the changes
+- [ ] Improve readability of date input label if needed

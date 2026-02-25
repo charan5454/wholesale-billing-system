@@ -1,0 +1,77 @@
+# Verification Walkthrough
+
+The **Smart Job Seeking and Hiring Platform** has been successfully implemented. Follow these steps to verify the application functions as expected.
+
+## prerequisites
+- Ensure XAMPP (or WAMP/LAMP) is installed and running.
+- Ensure the database `smart_job_platform` is created and tables exist (use `database.sql` if needed).
+- Place the project files in your `htdocs` directory (e.g., `C:\xampp\htdocs\smart_job_platform`).
+- Update `config.php` if your MySQL credentials differ from `root` / `""`.
+
+## 1. User Registration Verification
+1. Navigate to `http://localhost/smart_job_platform/index.php`.
+2. Click **"I'm a Job Seeker"**.
+3. Fill in the registration form (e.g., `seeker1`, `seeker@test.com`, `password`, `Job Seeker`).
+4. **Expected Result**: Success message "Registration successful! You can now Login.".
+5. Repeat for a Recruiter (e.g., `recruiter1`, `recruiter@test.com`, `password`, `Recruiter`).
+
+## 2. Job Seeker Profile Flow
+1. Login as the Job Seeker.
+2. You should be redirected to the **Seeker Dashboard**.
+3. Click **"Edit Profile"**.
+4. Enter details:
+   - Full Name: `John Doe`
+   - Phone: `1234567890`
+   - Education: `B.Tech in CS`
+   - Skills: `PHP, MySQL, JavaScript`
+   - Upload a dummy resume file.
+5. Click **"Save Changes"**.
+6. **Expected Result**: "Profile updated successfully!" and dashboard updates with new info.
+
+## 3. Recruiter Search Flow
+1. Logout and Login as the Recruiter.
+2. You should be redirected to the **Recruiter Dashboard**.
+3. In the search bar, enter `PHP`.
+4. Click **"Search"**.
+5. **Expected Result**: `John Doe` should appear in the results card.
+
+## 4. Contact & Notification Flow
+1. Click **"View Full Profile"** on `John Doe`'s card.
+2. Verify education, experience, and skills match what was entered.
+3. Click the green **"Contact via SMS"** button.
+4. **Expected Result**: A success screen with a big Green Checkmark saying "SMS Notification Sent!".
+5. (Optional) Check the `notifications` table in the database to see the record.
+
+## 5. Security & Validation
+- Try accessing `/seeker/dashboard.php` without logging in. **Expected Result**: Redirect to login.
+- Try accessing `/recruiter/dashboard.php` as a Seeker. **Expected Result**: Redirect to login (or error).
+
+## 6. Static Preview (Run without PHP)
+If you do not have a PHP server running, you can view the design using the **Static HTML Preview**:
+1. Open the file `c:/Users/kanam/OneDrive/Antigravity Codes/static_preview/index.html` in your web browser.
+2. You can navigate through the pages:
+   - Click "I'm a Job Seeker" -> Register -> Login -> Dashboard.
+   - Click "Login" -> Login as Recruiter -> Dashboard.
+3. This mode is for **UI verification only** and does not support data saving or real functionality.
+
+## 7. Deployment to XAMPP/WAMP
+To run the full PHP application:
+
+### Step 1: Copy Files
+1. Locate your XAMPP/WAMP installation directory (usually `C:\xampp` or `C:\wamp64`).
+2. Open the `htdocs` (for XAMPP) or `www` (for WAMP) folder.
+3. Create a new folder named `smart_job_platform`.
+4. Copy all files from your project folder (`c:/Users/kanam/OneDrive/Antigravity Codes/`) into this new folder.
+
+### Step 2: Database Setup
+1. Open XAMPP/WAMP Control Panel and start **Apache** and **MySQL**.
+2. Go to [http://localhost/phpmyadmin](http://localhost/phpmyadmin) in your browser.
+3. Click **New**, enter database name `smart_job_platform`, and click **Create**.
+4. Click **Import** tab, choose the `database.sql` file from your project, and click **Import**.
+
+### Step 3: Configure Connection
+1. If your MySQL root password is not empty (default is empty), open `config.php` in the deployed folder.
+2. Update the `$password` value.
+
+### Step 4: Run
+- Access the site at: `http://localhost/smart_job_platform/`

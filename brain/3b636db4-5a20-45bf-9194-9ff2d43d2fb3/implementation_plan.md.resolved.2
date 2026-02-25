@@ -1,0 +1,29 @@
+# Robust Layout Fixing & Value Visibility
+
+Fix the "half screen" appearance by making the layout more flexible and ensuring all numeric values are visible regardless of container width.
+
+## Proposed Changes
+
+### [MODIFY] [App.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/App.jsx)
+- Reduce sidebar width from `250px` to `220px`.
+- Ensure `.app-container` has `width: 100%` and `max-width: 100vw`.
+- Adjust `main-content` margin accordingly.
+
+### [MODIFY] [UnifiedVendors.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/UnifiedVendors.jsx)
+- **Grid Layout**: 
+    - Reduce left column width from `350px` to `300px`.
+    - Change breakpoint for stacking to `1200px` to avoid horizontal compression.
+    - Change `grid-template-columns` to `minmax(280px, 320px) 1fr`.
+- **Value Visibility**:
+    - Update summary spans to handle wrapping better: use `flex-wrap: wrap` if needed or ensure labels don't push values out.
+    - Add `|| 0` to all displayed values to avoid empty/NaN displays.
+    - Ensure `.summary-line` has enough vertical space for values.
+- **Form Compaction**:
+    - Slightly reduce gap in `item-input-row`.
+
+## Verification Plan
+
+### Manual Verification
+- Verify on different window widths that the Billing card doesn't get cut off.
+- Verify that "Remaining Balance" value is definitely visible next to its label.
+- Verify that the layout feels "full screen" and not cramped.

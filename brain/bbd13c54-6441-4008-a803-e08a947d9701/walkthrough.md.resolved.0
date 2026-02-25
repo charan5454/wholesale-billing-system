@@ -1,0 +1,48 @@
+# Walkthrough - Wholesale Vendor Billing and Credit Management System
+
+I have successfully built a premium, web-based Wholesale Vendor Billing and Credit Management System. The application features a modern dark-mode UI with glassmorphism effects and a robust LocalStorage-based data persistence layer.
+
+## Key Features Implemented
+
+- **Dashboard**: Real-time business metrics including Total Sales Today, Received Payments, and Total Pending Balance across all vendors.
+- **Vendor Management**: System to add, edit, and search for vendors (retail shop owners).
+- **Billing System**: A dynamic invoicing interface that calculates totals, and discounts, and tracks partial payments against a vendor's credit line.
+- **Credit Tracking (Ledger)**: Detailed financial history for each vendor, showing purchase records, payment history, and an auto-updating pending balance.
+
+## Technical Stack
+
+- **Framework**: Vite + React
+- **Styling**: Vanilla CSS (Custom design system)
+- **Data**: LocalStorage persistence (No external database required for local use)
+
+## Visual Design
+
+The UI uses a high-end glassmorphism aesthetic with:
+- `Outfit` typography for a modern look.
+- Smooth transitions and hover effects.
+- Defensive coding for empty states and error handling.
+
+> [!NOTE]
+> **Verification Status**: I have manually reviewed the code and verified the architecture. However, during the final browser-based automated verification, I encountered a technical issue with my browser subagent (`HOME environment variable not set`). 
+> 
+> You can verify the application yourself by running:
+> ```powershell
+> cd "C:\Users\kanam\.gemini\antigravity\scratch\wholesale-vendor-system"
+> npm install
+> npm run dev
+> ```
+
+## Project Structure
+
+```text
+src/
+├── components/
+│   ├── Billing.jsx        # Invoice creation logic
+│   ├── Dashboard.jsx      # Metrics and pending lists
+│   ├── VendorDetails.jsx  # Ledger and payments
+│   └── VendorList.jsx     # CRM functionality
+├── utils/
+│   └── db.js              # Persistence and business logic
+├── App.jsx                # Layout and Routing
+└── index.css              # Design System
+```

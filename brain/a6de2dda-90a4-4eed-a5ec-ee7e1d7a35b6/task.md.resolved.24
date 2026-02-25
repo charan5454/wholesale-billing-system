@@ -1,0 +1,35 @@
+# Task: Dedicated Product Management & Billing Refinement
+
+- [x] Sidebar & Navigation
+    - [x] Update [App.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/App.jsx) to add "Manage Products" tab below "Generate Bill"
+- [x] Manage Products Component
+    - [x] Create [ManageProducts.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/ManageProducts.jsx) for product CRUD
+    - [x] Implement "vanish zero" logic in price input
+    - [x] Fix product persistence bug in [db.js](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/utils/db.js)
+    - [x] UI: Refine layout to be premium and non-boxy
+- [x] Billing Refinement
+    - [x] Clean up product management code from [Billing.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/Billing.jsx)
+    - [x] Reliability: Auto-fill price on product select
+    - [x] UX: Multi-row empty state handling
+    - [x] UI: prominent due amount display
+    - [x] Default quantity to 0 with "vanish zero" logic
+    - [x] UI: Fix invisible item input "rectangles"
+    - [x] UI: Increase QTY box width in [Billing.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/Billing.jsx)
+    - [x] UX: Refine "vanish zero" logic for better responsiveness
+- [x] Bug Fixes
+    - [x] Fix dropdown option visibility (white-on-white text) in [index.css](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/index.css)
+- [x] UI Consistency Fixes
+    - [x] Fix invisible table inputs in [ManageProducts.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/ManageProducts.jsx)
+- [x] Final Refinements
+    - [x] Remove Print option from [Billing.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/Billing.jsx) (Save only)
+    - [x] Enhanced Statement in [VendorDetails.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/VendorDetails.jsx) (Total History + Items + Payments)
+- [x] Print Reliability Refinements
+    - [x] Fix print overflow/truncation in [index.css](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/index.css)
+    - [x] Improve item listing in [VendorDetails.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/VendorDetails.jsx) statement
+- [x] Final Print UX Refinement
+    - [x] Dynamic filename with Vendor Name & Timestamp
+- [x] Verification
+    - [x] Verify tab order in Sidebar
+    - [x] Test product CRUD in new tab
+    - [x] Test selection and auto-fill in Billing
+    - [x] Verify due amounts and zero-vanish

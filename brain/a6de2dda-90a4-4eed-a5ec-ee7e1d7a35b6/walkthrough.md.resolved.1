@@ -1,0 +1,41 @@
+# Walkthrough - Billing Improvements & Product Management
+
+I have implemented the requested features to enhance the billing system and improve user experience.
+
+## Key Features Implemented
+
+### 1. Due Amount Tracking
+- **Previous Due**: Displays the vendor's outstanding balance when selected.
+- **Total Due**: Shows the combined total of the previous due and the current bill.
+- **Real-time Updates**: The balance is automatically updated in the database when a bill is saved.
+
+### 2. Product Management
+- **Add/Edit/Delete**: A new "Manage Products" section allows you to define products and their default prices.
+- **Auto-fill**: Selecting a product from the dropdown in the billing form now automatically fills in the saved price.
+- **Custom Dropdown**: Uses a datalist that stays updated with your managed products.
+
+### 3. UI Improvements
+- **Vanish Zero**: Number fields containing `0` will now automatically clear when you click on them, making it easier to type.
+- **Empty Row Handling**: You can now click "Add Row" multiple times without having to fill every row. Empty rows are automatically ignored when generating the bill.
+
+## Verification
+
+### Product Management
+1. Click **Manage Products**.
+2. Add a product (e.g., "Bread" with price "40").
+3. In the billing form, start typing "Bread".
+4. Select it from the suggestions and notice the price is auto-filled.
+
+### Due Amount
+1. Select a vendor.
+2. Observe the "Previous Due" in the vendor section and the summary.
+3. Observe "Total Due" adding the current bill amount.
+
+### Submission
+1. Add multiple rows.
+2. Fill only one row and click **Generate & Save Bill**.
+3. The bill will be saved with only the filled data.
+
+### Vanish Zero
+1. Click on any field with `0` (like Discount or Quantity).
+2. The zero vanishes immediately, allowing you to type your number.

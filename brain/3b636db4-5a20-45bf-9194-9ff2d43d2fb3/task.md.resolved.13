@@ -1,0 +1,13 @@
+# Tasks
+
+- [ ] Shop Management Functions
+    - [ ] Implement `deleteVendor` in [db.js](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/utils/db.js)
+    - [ ] Add "Edit" and "Delete" buttons to [VendorList.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/VendorList.jsx)
+    - [ ] Create Edit Modal in [VendorList.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/VendorList.jsx)
+- [ ] Dashboard Updates
+    - [ ] Update [getDashboardStats](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/utils/db.js#91-109) for cumulative totals (sales, received)
+    - [ ] Update labels in [Dashboard.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/Dashboard.jsx)
+- [ ] Reporting Feature
+    - [ ] Add "Download Report" button to [VendorDetails.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/VendorDetails.jsx)
+    - [ ] Implement print-friendly report layout (Items, Payments, Balances)
+    - [ ] Add CSS for print formatting

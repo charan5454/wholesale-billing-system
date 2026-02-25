@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "I am updating the implementation plan to focus on fixing the navbar overlap and mobile menu transparency. I will remove the absolute positioning from the navbar and add a glass effect to the mobile menu.",
+  "updatedAt": "2026-02-14T18:24:07.273257400Z",
+  "version": "3"
+}

@@ -1,0 +1,40 @@
+# Borrower Edit Feature
+
+The user wants to add an "Edit" option to borrower records to correct mistakes.
+
+## Proposed Changes
+
+### Server
+#### [MODIFY] [server.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/server.js)
+- Add `PUT /api/borrowers/:id` endpoint.
+- Support updating all fields: name, village (address), age, amount, rate, rate_unit, and given_at.
+- Support optional file upload for the evidence image.
+- Ensure user owns the record before updating.
+
+### UI
+#### [MODIFY] [index.html](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/index.html)
+- Add a hidden input `#bId` to `addBorrowerForm` to store the ID of the borrower being edited.
+- Add a "Cancel" button to the form (initially hidden) to exit edit mode.
+- The "Add" button will have its text changed to "Update" when in edit mode.
+
+### Logic
+#### [MODIFY] [app.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/js/app.js)
+- In [loadBorrowers](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/js/app.js#486-541), add an "Edit" button to each row.
+- Add `editBorrower(id)` function to populate the form and switch to edit mode.
+- Update `addBorrowerForm` submit listener to handle both POST (new) and PUT (edit) requests.
+- Add `cancelEdit()` to clear the form and reset button labels.
+
+## Verification Plan
+
+### Automated Tests
+- N/A
+
+### Manual Verification
+1. Login to the application.
+2. Go to "Manage Borrowers".
+3. Add a test borrower.
+4. Click the "Edit" button (pencil icon) in the list.
+5. Confirm the form fills with the borrower's details and the button says "Update".
+6. Change a value (e.g., amount) and click "Update".
+7. Confirm the list reflects the updated value.
+8. Test the "Cancel" button to ensure it clears the form and resets the mode.

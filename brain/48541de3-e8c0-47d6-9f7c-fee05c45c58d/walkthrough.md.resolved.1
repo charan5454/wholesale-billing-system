@@ -1,0 +1,27 @@
+### Login Modal Visibility (Mobile)
+- Reduced the `z-index` of the navbar and its collapse menu. Previously, they were set to `9999` and `10000`, which caused them to cover the login modal's backdrop and inputs. They are now set to `1030` and `1031`, which is below Bootstrap's modal level (`1050+`).
+- Improved form input contrast and label visibility within modals.
+- Added a fix to prevent mobile browsers from auto-zooming when focusing on input fields.
+
+### PDF Download Fix
+- Replaced the Rupee symbol (`₹`) with `Rs.` in the PDF generation logic. Standard PDF fonts do not support the Unicode Rupee symbol, which was causing the generation to fail silently.
+- Verified that both the "Calculation Report" and "Borrower Settlement Report" now use `Rs.` to ensure successful downloads.
+
+### Navigation Improvement
+- Added logic to automatically close the mobile navbar menu after a link (like "Borrowers" or "Login") is clicked, providing a smoother user experience.
+
+## Verification Results
+
+### CSS z-index
+The sticky navbar now respects modal layers:
+```css
+.bg-dark-glass { z-index: 1030 !important; }
+.navbar-collapse { z-index: 1031 !important; }
+```
+
+### PDF Logic
+Strings containing currency are now sanitized:
+```javascript
+doc.text(`Total Interest: ${resInterest.textContent.replace('₹', 'Rs.')}`, 20, 90);
+```
+

@@ -1,0 +1,8 @@
+# Tasks
+
+- [x] Enhance Vendor Details Section
+    - [x] Update labels for "Record Payment" and "Payment History"
+    - [x] Add date selection to "Add Paid Money" modal
+    - [x] Implement bill details expansion in Purchase History
+- [x] Update Database Utility
+    - [x] Modify [addPayment](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/utils/db.js#70-90) to support manual date entry

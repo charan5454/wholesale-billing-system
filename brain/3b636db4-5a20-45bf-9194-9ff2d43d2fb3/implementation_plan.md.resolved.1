@@ -1,0 +1,24 @@
+# Refining Layout and Adding Item Dropdowns
+
+Fix layout issues where values are not visible and add predefined items (Milk, Biscuits, Eggs) as suggestions in the billing form.
+
+## Proposed Changes
+
+### Frontend Components
+
+#### [MODIFY] [UnifiedVendors.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/UnifiedVendors.jsx)
+- **Item Dropdown**:
+    - Add a `<datalist id="item-suggestions">` with options for "Milk", "Biscuits", and "Eggs".
+    - Update the "Item Name" input to use `list="item-suggestions"`.
+- **Layout & Visibility Fixes**:
+    - Remove fixed `height: calc(100vh - 120px)` from `.layout-grid` and use `min-height: auto` or a more flexible approach to avoid squashing internal elements.
+    - Improve the `.summary-section` to ensure values are visible by adding explicit widths or ensuring flex items don't shrink too much.
+    - Check why `remainingBalance` and other values might be missing (add null/NaN checks).
+    - Adjust `grid-template-columns` to handle smaller widths better (e.g., stack earlier).
+
+## Verification Plan
+
+### Manual Verification
+- Verify that typing in the "Item Name" field shows suggestions for Milk, Biscuits, and Eggs.
+- Verify that the layout fills the screen appropriately and doesn't look like "half screen".
+- Verify that "Subtotal", "Final Total", and "Remaining Balance" values are clearly visible on the right side of their labels.

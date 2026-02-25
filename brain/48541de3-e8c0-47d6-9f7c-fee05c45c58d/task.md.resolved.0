@@ -1,0 +1,7 @@
+# Task: Refine Mobile Responsiveness
+
+- [ ] Analyze current CSS for mobile view (`max-width: 576px`) [/]
+- [ ] Increase navbar brand font size for mobile [ ]
+- [ ] Adjust navbar brand vertical alignment (padding/margin) for mobile [ ]
+- [ ] Add `viewport-fit=cover` to meta tag for better PWA display on mobile [ ]
+- [ ] Verify changes do not impact desktop view [ ]

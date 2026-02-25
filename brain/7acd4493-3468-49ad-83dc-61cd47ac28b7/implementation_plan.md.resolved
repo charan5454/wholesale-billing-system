@@ -1,0 +1,37 @@
+# Borrower Repayment Status Feature
+
+The user wants to track whether a loan has been repaid and filter the borrower list accordingly.
+
+## Proposed Changes
+
+### Database
+#### [MODIFY] [database.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/database.js)
+- Add `is_repaid` column to the `borrowers` table with a default value of `FALSE`.
+
+### Server
+#### [MODIFY] [server.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/server.js)
+- Add `PATCH /api/borrowers/:id/status` endpoint to update the `is_repaid` status.
+- Ensure only the owner can update the status.
+
+### UI
+#### [MODIFY] [index.html](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/index.html)
+- **Navbar**: Remove the "Status" nav item.
+- **Borrower Modal**: Add a status filter dropdown (ALL, YES, NO) next to the "Borrower List" heading inside the modal.
+
+### Logic
+#### [MODIFY] [app.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/js/app.js)
+- Update status filter selector to find the new dropdown in the modal.
+- Ensure the dropdown only appears when the user is logged in (already handled by modal visibility).
+- Update the [updateAuthUI](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/js/app.js#336-351) to remove references to the old navbar status container.
+
+## Verification Plan
+
+### Manual Verification
+1. Add a borrower.
+2. In the "Manage Borrowers" list, find the "Is Repaid" column.
+3. Toggle the dropdown from "NO" to "YES".
+4. Refresh the page to ensure the status persisted.
+5. Click on the "Status" nav item and select "YES".
+6. Confirm only repaid borrowers are shown.
+7. Select "NO" and confirm only unpaid borrowers are shown.
+8. Select "ALL" to see everything again.

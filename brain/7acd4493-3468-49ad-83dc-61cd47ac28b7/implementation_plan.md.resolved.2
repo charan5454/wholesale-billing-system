@@ -1,0 +1,19 @@
+# Default Values and Units Update
+
+The user wants the numerical fields to default to `0` and the rate unit dropdown to default to `₹ / Mo`.
+
+## Proposed Changes
+
+### Calculator Form
+#### [MODIFY] [index.html](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/index.html)
+- Add `value="0"` to the Principal Amount input.
+- Add `value="0"` to the Rate input.
+- Add `value="0"` to the Time input.
+- Add `selected` attribute to the `₹ / Mo` option in the rate unit dropdown.
+
+## Verification Plan
+
+### Manual Verification
+1. Refresh the application.
+2. Confirm that Principal, Rate, and Time fields show `0` by default.
+3. Confirm that the Rate unit dropdown shows `₹ / Mo` by default.

@@ -1,0 +1,14 @@
+# Task: Implement and Verify on Localhost
+
+- [ ] Research Project State [/]
+    - [ ] List project files
+    - [ ] Check `package.json` for scripts and dependencies
+- [ ] Prepare Environment [ ]
+    - [ ] Install dependencies if `node_modules` is missing
+- [ ] Execution [ ]
+    - [ ] Start development server (`npm run dev`)
+- [ ] Verification [ ]
+    - [ ] Open application in browser
+    - [ ] Verify 3-tab layout (Dashboard, Shops, Billing)
+    - [ ] Verify Billing tab dropdowns (Milk, Biscuits, Eggs)
+    - [ ] Record a video/screenshot of the working app

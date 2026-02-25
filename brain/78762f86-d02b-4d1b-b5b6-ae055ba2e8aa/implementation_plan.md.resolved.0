@@ -1,0 +1,17 @@
+# Enhancing Borrower Interest Calculations
+
+This plan outlines the changes needed to set the Rupee (₹) as the default currency and implement precise, date-based interest calculations for borrowers.
+
+## Proposed Changes
+
+### UI Updates
+- Set ₹ as the default currency in [index.html](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/index.html).
+- Update the borrower "Action" button to calculate interest based on the exact time period from the loan date to today.
+
+### Calculation Logic
+- Update borrower interest calculation to include days for precision.
+- Implement a display for the time period (years, months, days) when calculating borrower debt.
+
+## Verification Plan
+- Manually test the currency dropdown default.
+- Verify borrower interest calculation with specific dates (e.g., loan taken 1 month and 15 days ago).

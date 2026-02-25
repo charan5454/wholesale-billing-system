@@ -1,0 +1,41 @@
+# Borrower Repayment Status Feature
+
+The user wants to track whether a loan has been repaid and filter the borrower list accordingly.
+
+## Proposed Changes
+
+### Database
+#### [MODIFY] [database.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/database.js)
+- Add `is_repaid` column to the `borrowers` table with a default value of `FALSE`.
+
+### Server
+#### [MODIFY] [server.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/server.js)
+- Add `PATCH /api/borrowers/:id/status` endpoint to update the `is_repaid` status.
+- Ensure only the owner can update the status.
+
+### UI
+#### [MODIFY] [index.html](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/index.html)
+- **Navbar**: Add a "Status" nav item.
+- **Filter Modal/Dropdown**: Add a small UI (could be a simple dropdown or a small modal) for filtering by status (YES, NO, ALL).
+- **Borrower List**: Add an "Is Repaid" column to the table.
+- **Table Row**: Insert a dropdown (YES/NO) in each row to toggle the repayment status.
+
+### Logic
+#### [MODIFY] [app.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/js/app.js)
+- **Status Toggle**: Handle the `change` event on the YES/NO dropdown in the table to send a generic `PATCH` request to the server.
+- **Filtering**:
+    - Store the current status filter (default: "ALL").
+    - Update [loadBorrowers](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/js/app.js#502-562) to accept a filter or handle filtering on the client-side/server-side. Client-side filtering is easier and faster for this use case.
+    - Implement the "Status" nav item click to show the filter options.
+
+## Verification Plan
+
+### Manual Verification
+1. Add a borrower.
+2. In the "Manage Borrowers" list, find the "Is Repaid" column.
+3. Toggle the dropdown from "NO" to "YES".
+4. Refresh the page to ensure the status persisted.
+5. Click on the "Status" nav item and select "YES".
+6. Confirm only repaid borrowers are shown.
+7. Select "NO" and confirm only unpaid borrowers are shown.
+8. Select "ALL" to see everything again.

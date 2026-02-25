@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "I have reverted the application to its original 3-tab layout (Dashboard, Shops, Billing) and removed the 'Friend Key' activation field. I've also added the item name dropdown for Milk, Biscuits, and Eggs to the Billing page.",
+  "updatedAt": "2026-02-24T17:13:50.095272600Z",
+  "version": "3"
+}

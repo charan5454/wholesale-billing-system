@@ -1,0 +1,32 @@
+# UI Refinement and Feature Removal
+
+The user wants to refine the "Manage Borrowers" UI and remove the "History" feature.
+
+## Proposed Changes
+
+### Navigation
+#### [MODIFY] [index.html](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/index.html)
+- Remove the "History" nav item (`#nav-history`).
+
+### Main Calculator & Manage Borrowers Modal
+#### [MODIFY] [index.html](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/index.html)
+- Remove `value="0"` from:
+    - **Principal**: Main calculator input `#principal`.
+    - **Rate**: Main calculator input `#rate`.
+    - **Time**: Main calculator input `#time`.
+- Rename "Village" to "Address" in:
+    - Add Borrower input `placeholder`.
+    - Borrower List table header `<th>`.
+- Update placeholders and remove `value="0"` for borrower form:
+    - **Age**: Remove `value="0"`.
+    - **Amount**: Remove `value="0"`.
+    - **Rate**: Remove `value="0"`.
+
+## Verification Plan
+
+### Manual Verification
+1. Refresh the app.
+2. Confirm the "History" tab is gone from the navbar.
+3. Open "Manage Borrowers".
+4. Confirm "Village" is now "Address".
+5. Confirm "Age", "Amount", and "Rate" show their names as green placeholders instead of "0".

@@ -1,0 +1,27 @@
+# Walkthrough: Mobile Refinements & Bug Fixes
+
+I have completed the requested branding refinements and resolved the issues with the login modal and PDF downloads.
+
+## Changes Made
+
+### 1. Branding Refinements (Mobile)
+- **Bigger Title**: Increased the font size of "Kanamoni's Interest Calculator" from `1.0rem` to `1.4rem`.
+- **Lower Alignment**: Added top padding to the title to align it further down on small screens.
+- **Notch Support**: Added `viewport-fit=cover` to the meta tags to ensure the app looks proper on modern phones with notches.
+
+### 2. Login Modal Fixes (Mobile)
+- **z-index Conflict**: Reduced the navbar's z-index so it stays behind the login modal. Previously, the open mobile menu was covering the login boxes.
+- **Input Visibility**: Improved contrast for labels and inputs inside modals.
+- **Auto-Zoom Fix**: Set input font-size to `16px` on mobile to prevent browsers from automatically zooming in when you tap a field.
+
+### 3. PDF Download Fix
+- **Rupee Symbol Encoding**: Replaced the `₹` symbol with `Rs.` in the PDF generator. Standard PDF fonts didn't recognize the symbol, which was causing the download to fail silently.
+- **Verified Reports**: Both the main calculator report and borrower settlement reports are now working.
+
+### 4. Navigation Improvement
+- **Auto-Close Menu**: The mobile navbar menu now closes automatically after you click a link (like "Borrowers" or "Login").
+
+## Verification Results
+
+The changes were applied specifically for screen widths under `576px` where applicable, ensuring the desktop website remains unchanged.
+

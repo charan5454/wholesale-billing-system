@@ -1,0 +1,30 @@
+# Visibility and Branding Update Walkthrough
+
+I have updated the application branding and improved input visibility as requested.
+
+## Changes Made
+
+### Branding
+- Named the application **Kanamoni's Interest Calculator** in the page title and navigation bar.
+
+### Styles & Defaults
+- Set all input placeholder text to a vibrant **GREEN** (`#4ade80`) for better visibility.
+- Set default values for **Principal**, **Rate**, **Age**, and **Time** to `0` in all forms (Main Calculator and Add Borrower).
+- Set the default **Rate Unit** to `₹ / Mo` everywhere.
+- Maintained `color-scheme: dark` for date inputs to ensure browser elements are legible.
+- Slightly improved label contrast for better accessibility.
+
+### UI Refinements
+- Renamed **Village** to **Address** in the borrower form and list for better clarity.
+- Restored text placeholders (**Age**, **Amount**, **Rate**) in the borrower form, removing the `0` default to show the labels more clearly in green.
+- Hidden the **History** tab from the main navigation.
+
+## Final Verification Results
+
+### UI Elements in [index.html](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/index.html)
+- `placeholder="Address"` applied to village input.
+- `value="0"` removed from borrower form inputs to show green placeholders.
+- `#nav-history` removed from navbar (hidden).
+
+
+These changes ensure that the text "Name", "Village", "Age", etc., are now clearly visible as placeholders when the input boxes are empty.

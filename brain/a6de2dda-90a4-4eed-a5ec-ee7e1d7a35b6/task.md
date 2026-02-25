@@ -1,0 +1,37 @@
+# Task: Dedicated Product Management & Billing Refinement
+
+- [x] Sidebar & Navigation
+    - [x] Update `App.jsx` to add "Manage Products" tab below "Generate Bill"
+- [x] Manage Products Component
+    - [x] Create `ManageProducts.jsx` for product CRUD
+    - [x] Implement "vanish zero" logic in price input
+    - [x] Fix product persistence bug in `db.js`
+    - [x] UI: Refine layout to be premium and non-boxy
+- [x] Billing Refinement
+    - [x] Clean up product management code from `Billing.jsx`
+    - [x] Reliability: Auto-fill price on product select
+    - [x] UX: Multi-row empty state handling
+    - [x] UI: prominent due amount display
+    - [x] Default quantity to 0 with "vanish zero" logic
+    - [x] UI: Fix invisible item input "rectangles"
+    - [x] UI: Increase QTY box width in `Billing.jsx`
+    - [x] UX: Refine "vanish zero" logic for better responsiveness
+- [x] Bug Fixes
+    - [x] Fix dropdown option visibility (white-on-white text) in `index.css`
+- [x] UI Consistency Fixes
+    - [x] Fix invisible table inputs in `ManageProducts.jsx`
+- [x] Final Refinements
+    - [x] Remove Print option from `Billing.jsx` (Save only)
+    - [x] Enhanced Statement in `VendorDetails.jsx` (Total History + Items + Payments)
+- [x] Print Reliability Refinements
+    - [x] Fix print overflow/truncation in `index.css`
+    - [x] Improve item listing in `VendorDetails.jsx` statement
+- [x] Final Print UX Refinement
+    - [x] Dynamic filename with Vendor Name & Timestamp
+- [x] Dashboard & Branding
+    - [x] Replace "Wholesale Pro" with Dairy Logo (Simple "Dairy" name)
+- [x] Verification
+    - [x] Verify tab order in Sidebar
+    - [x] Test product CRUD in new tab
+    - [x] Test selection and auto-fill in Billing
+    - [x] Verify due amounts and zero-vanish

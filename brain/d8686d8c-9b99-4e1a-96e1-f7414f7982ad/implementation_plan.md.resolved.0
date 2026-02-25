@@ -1,0 +1,39 @@
+# Interest Calculator Implementation Plan
+
+## Goal Description
+Build a responsive full-stack Interest Calculator web application. Users can calculate Simple Interest, Compound Interest, and EMI, visualize growth with charts, and download reports. Registered users can save calculations.
+
+## User Review Required
+> [!IMPORTANT]
+> **Database Requirement**: This project requires a running **MySQL** server. Please ensure you have MySQL installed and running, and update the database connection credentials in `.env` (or config) once generated.
+> **Node.js**: I will use Node.js for the backend. Ensure Node.js and npm are installed.
+
+## Proposed Changes
+I will create a new directory `interest-calculator` to contain the project.
+
+### Backend (Node.js/Express)
+- **`server.js`**: Main entry point, API routes.
+- **`database.js`**: MySQL connection logic.
+- **`routes/auth.js`**: Login/Register endpoints.
+- **`routes/calculator.js`**: Calculation handling and history saving.
+
+### Database (MySQL)
+- **Schema**:
+    - `users` table: `id`, `username`, `password_hash`, `created_at`
+    - `history` table: `id`, `user_id`, `type`, `principal`, `rate`, `time`, `result`, `date`
+
+### Frontend (HTML/Bootstrap/JS)
+- **`public/index.html`**: Main single-page application structure.
+- **`public/js/app.js`**: Logic for API calls, chart rendering (Chart.js), and PDF generation (jspdf).
+- **`public/css/style.css`**: Custom aesthetics (Glassmorphism, gradients).
+
+## Verification Plan
+### Automated Tests
+- None planned for this mini-project, but I will provide a script to test DB connection.
+### Manual Verification
+- **Functional**:
+    - Calculate SI, CI, EMI and check accuracy.
+    - Check Charts rendering.
+    - Register a user, log in, save a calculation, view it in history.
+    - Download PDF.
+- **Responsive**: Check UI on mobile/desktop view sizes.

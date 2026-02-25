@@ -1,0 +1,30 @@
+# Walkthrough - Interest Calculation & Debugging Fixes
+
+I have addressed the calculation inaccuracies and the "Forbidden/Database Error" issues reported.
+
+## Changes Made
+
+### 1. Interest Calculation Logic
+- **Standardized Months**: Switched to a "Total Days / 30" approach for monthly interest. This is the standard for local finance calculations.
+- **Improved Date Diff**: [getPreciseDateDiff](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/js/app.js#342-370) now returns `totalDays` and handles date normalization (midnight local time) to ensure consistency regardless of what time of day the calculation is performed.
+- **UI Update**: The borrower calculation result now explicitly shows the total number of days elapsed.
+
+### 2. Authentication & Database Debugging
+- **Session Handling**: Added detection for 403 Forbidden errors (expired tokens). Users are now prompted to log in again instead of seeing a raw JSON error.
+- **Detailed Errors**: Updated [server.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/server.js) to return specific database error messages (`err.message`) for registration and login, allowing for faster troubleshooting.
+- **Column Expansion**: Increased the `rate` and `amount` column sizes in the database to prevent overflow errors with large values.
+
+## Verification Results
+
+### Calculation Verification
+- **Scenario**: 40,000 principal, 3% monthly rate, from Nov 6, 2025 to Feb 3, 2026.
+- **Old Result**: ~3520 (using calendar logic).
+- **New Result**: ~3560 (using 89 days / 30 = 2.966 months).
+- **Status**: Fixed to better match local standards.
+
+### Authentication
+- Added startup connectivity check to ensure the server can talk to MySQL immediately.
+
+[task.md](file:///C:/Users/kanam/.gemini/antigravity/brain/d8686d8c-9b99-4e1a-96e1-f7414f7982ad/task.md)
+[server.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/server.js)
+[app.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/js/app.js)

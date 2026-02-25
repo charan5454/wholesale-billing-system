@@ -1,0 +1,30 @@
+# Implementation Plan - Simplified Wholesale Vendor System
+
+Simplify the system by merging vendor management into a unified 'Vendors' tab (formerly 'New Bill'), adding a 'Friend Mode' restriction, and implementing price adjustment logic with purchase history.
+
+## Proposed Changes
+
+### UI & Layout
+- **App Layout**:
+    - Remove the standalone 'Vendors' tab from navigation.
+    - Rename 'New Bill' tab to **'Vendors'**.
+    - Add a simple 'Friend Mode' lock/toggle to protect data entry.
+- **Unified Vendors Tab (Billing & History)**:
+    - Add ability to create new vendors directly within the billing form.
+    - Implement a **Purchase History** section that dynamically loads when a vendor is selected.
+    - Add a **Price Adjustment** field:
+        - `Price` (Latest/Standard Price)
+        - `Settled Price` (New Price)
+        - The system will calculate the difference (deduction) and update the total.
+
+### Data & Logic
+- Update [db.js](file:///C:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/utils/db.js) to handle `settledPrice` and `deduction` fields in bills.
+- Create helpers to retrieve chronological purchase history for a specific shop.
+
+## Verification Plan
+
+### Manual Verification
+- Verify that only a 'friend' can add bills/vendors after unlocking.
+- Select a shop and confirm their specific purchase history is displayed.
+- Enter a 'Settled Price' and verify the deduction is correctly calculated and stored.
+- Check that the Dashboard still correctly reflects these new transactions.

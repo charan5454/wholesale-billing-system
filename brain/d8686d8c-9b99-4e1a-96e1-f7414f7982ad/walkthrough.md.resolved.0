@@ -1,0 +1,47 @@
+# Interest Calculator Walkthrough
+
+I have built a robust **Interest Calculator** web application with a Node.js backend and a Glassmorphism-style frontend.
+
+## Features Implemented
+- **Calculator**: Supports Simple Interest, Compound Interest, and EMI Loan calculations.
+- **Visualizations**: Dynamic Chart.js line charts showing growth or balance reduction over time.
+- **Reporting**: PDF download of calculation results.
+- **Architecture**: **Client-Server** model where the frontend sends inputs to the backend (`/api/calculate`) for processing.
+- **Authentication & History**: User registration/login and calculation history saving (Requires MySQL).
+
+[Feature: Calculator UI](public/index.html)
+[Feature: Backend Logic](server.js)
+
+## How to Run
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+2. **Database Configuration**:
+   - Ensure a MySQL server is running.
+   - Edit [.env](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/.env) with your credentials:
+     ```env
+     DB_HOST=localhost
+     DB_USER=root
+     DB_PASSWORD=your_password
+     DB_NAME=interest_calculator
+     ```
+   - Run the setup script to create tables:
+     ```bash
+     node setup_database.js
+     ```
+3. **Start the Server**:
+   ```bash
+   node server.js
+   ```
+4. **Access the App**:
+   - Open your browser to `http://localhost:3000`.
+
+## Notes
+> [!WARNING]
+> **Database Connection**: If the application cannot connect to the database (e.g., wrong password), it will log an error but **the calculator will still function**. Only Login/Register and History features will be disabled.
+
+## Verification
+- **Calculations**: Verified that logic for Simple, Compound, and EMI is implemented in [server.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/server.js).
+- **UI**: Verified responsive Bootstrap layout with custom glassmorphism CSS.
+- **API**: Endpoints are set up for `/api/calculate` and `/api/history`.

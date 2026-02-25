@@ -1,0 +1,45 @@
+# Implementation Plan - Billing Improvements & Product Management
+
+Update the billing system to track due amounts, manage products with default prices, and improve the user experience for data entry.
+
+## Proposed Changes
+
+### Database Utility [db.js](file:///c:/Users/kanam/..gemini/antigravity/scratch/wholesale-vendor-system/src/utils/db.js)
+- [NEW] Add `products` array to `initialState`.
+- [NEW] Implement `addProduct`, `updateProduct`, and `deleteProduct`.
+- [MODIFY] Ensure [addBill](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/utils/db.js#46-69) and [addPayment](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/utils/db.js#78-98) correctly reflect changes in `vendor.pendingBalance`.
+
+### Billing Component [Billing.jsx](file:///c:/Users/kanam/..gemini/antigravity/scratch/wholesale-vendor-system/src/components/Billing.jsx)
+- [NEW] Add "Manage Products" section/modal to add items with default prices.
+- [MODIFY] Display "Previous Due" for the selected vendor.
+- [MODIFY] Display "Total Due" (Previous Due + Current Bill Amount).
+- [MODIFY] Update Product Name input to use a custom dropdown or enhanced datalist that auto-fills price.
+- [MODIFY] Update [handleSubmit](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/Billing.jsx#39-59) to filter out empty / incomplete rows instead of blocking submission.
+- [MODIFY] Implement "vanish zero" logic: Use a helper function for number inputs to clear `0` on focus if it's the only value.
+
+### App Styles (Inline or index.css)
+- Add styles for the new Product Management UI and highlighted due amounts.
+
+## Verification Plan
+
+### Automated Verification
+- None (Browser tool issues).
+
+### Manual Verification
+1. **Product Management**:
+   - Add a product "Bread" with price "40".
+   - Verify it appears in the Billing dropdown.
+   - Select "Bread" and verify price "40" is auto-filled.
+   - Edit "Bread" to "50" and verify change.
+   - Delete "Bread" and verify removal.
+2. **Due Amount**:
+   - Select a vendor with existing balance.
+   - Verify "Previous Due" matches.
+   - Add a bill and verify "Total Due" updates correctly.
+3. **Submission**:
+   - Add 3 rows, fill only 1.
+   - Click "Generate Bill".
+   - Verify the bill is saved with only the filled row.
+4. **UI**:
+   - Click on a quantity field containing `0`.
+   - Type `5`. Verify it shows `5`, not `05`.

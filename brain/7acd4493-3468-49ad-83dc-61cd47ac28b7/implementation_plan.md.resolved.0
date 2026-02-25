@@ -1,0 +1,31 @@
+# Fix Placeholder Visibility
+
+The user reported that names (placeholders) inside input boxes in the "Manage Borrowers" modal are not visible. This is due to low contrast between the placeholder text color and the dark background of the inputs.
+
+## Proposed Changes
+
+### Styles
+#### [MODIFY] [style.css](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/css/style.css)
+- Add a CSS rule for `.bg-dark-input::placeholder` to set a more visible color.
+- Increase the opacity or brightness of the placeholder text to ensure it stands out against the dark input background.
+- Adjust the "Surety Evidence" label opacity for better readability.
+
+```css
+.bg-dark-input::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Improve date input visibility for some browsers */
+input[type="date"].bg-dark-input {
+    color-scheme: dark;
+}
+```
+
+## Verification Plan
+
+### Manual Verification
+1. Open the interest calculator in a browser.
+2. Login to access the "Borrowers" section.
+3. Open the "Manage Borrowers" modal.
+4. Verify that "Name", "Village", "Age", "Amount", and "Rate" placeholders are clearly visible.
+5. Verify that the date input "dd-mm-yyyy" text is also legible.

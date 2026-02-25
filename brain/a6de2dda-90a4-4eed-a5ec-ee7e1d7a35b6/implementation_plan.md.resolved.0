@@ -1,0 +1,22 @@
+# Implementation Plan - Localhost Verification
+
+Verify that the wholesale-vendor-system runs correctly on localhost with the 3-tab layout and product suggestions.
+
+## Proposed Changes
+
+No code changes are required as the project is already in the desired state. The focus is on execution and verification.
+
+## Verification Plan
+
+### Automated Verification (Browser Tool)
+1. Run `npm run dev` in the project directory.
+2. Capture the local URL from the terminal output (usually `http://localhost:5173`).
+3. Open the URL in the browser tool.
+4. Verify the following:
+   - **Tabs**: Dashboard, Shops, and Generate Bill are present in the sidebar.
+   - **Navigation**: Clicking tabs switches the main content correctly.
+   - **Billing**: Navigate to "Generate Bill", add a row, and check if "Milk", "Biscuits", and "Eggs" appear as suggestions in the "Product Name" field.
+5. Record a video of these actions.
+
+### Manual Verification
+1. None required beyond the automated browser verification.

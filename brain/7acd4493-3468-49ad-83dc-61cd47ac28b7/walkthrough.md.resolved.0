@@ -1,0 +1,27 @@
+# Visibility Fix Walkthrough
+
+I have improved the visibility of the names and other placeholders in the "Manage Borrowers" modal.
+
+## Changes Made
+
+### Styles
+- Added a specific rule for `.bg-dark-input::placeholder` to increase contrast.
+- Added `color-scheme: dark` to date inputs to ensure the browser-rendered parts (like the calendar icon and date format) are visible against the dark background.
+- Improved cross-browser compatibility for the gradient brand text in the navbar.
+- Slightly increased the opacity of smaller labels like "Surety Evidence (Optional)" for better readability.
+
+## Verification Results
+
+### CSS Changes in [style.css](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/css/style.css)
+
+```css
+.bg-dark-input::placeholder {
+    color: rgba(255, 255, 255, 0.45) !important;
+}
+
+input[type="date"].bg-dark-input {
+    color-scheme: dark;
+}
+```
+
+These changes ensure that the text "Name", "Village", "Age", etc., are now clearly visible as placeholders when the input boxes are empty.

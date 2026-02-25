@@ -1,0 +1,29 @@
+# PWA Conversion Walkthrough
+
+The "Interest Calculator" has been converted into a Progressive Web App (PWA). This allows users to install the app on their devices and provides a more app-like experience.
+
+## Changes Made
+
+### Files Created
+- [manifest.json](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/manifest.json): Defines the app's name, theme colors, and icons.
+- [service-worker.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/service-worker.js): Handles caching of static assets to improve performance and provide basic offline support for the shell.
+
+### Files Modified
+- [index.html](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/index.html): Added the manifest link and `theme-color` meta tag.
+- [app.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/js/app.js): Added service worker registration logic.
+
+## Technical Details
+- **Standalone Mode**: The app is configured to open in standalone mode (no browser UI).
+- **Service Worker**: Caches HTML, CSS, JS, and external CDN assets (Bootstrap, Font Awesome, etc.).
+- **Theme Color**: Set to `#2c3e50` to match the app's design.
+
+> [!NOTE]
+> Icon generation was attempted but encountered server capacity issues. For production, please ensure `public/icon-192.png` and `public/icon-512.png` are present. I have provided the `manifest.json` referencing these files.
+
+## How to Verify
+1. Open the application in a modern browser (Chrome/Edge).
+2. Check for the "Install" icon in the address bar.
+3. Open DevTools > Application tab:
+   - Verify the **Manifest** is detected.
+   - Verify the **Service Worker** is active and running.
+   - Check the **Cache Storage** for cached assets.

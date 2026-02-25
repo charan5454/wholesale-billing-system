@@ -1,0 +1,30 @@
+# Borrower Edit Feature (Robust Re-implementation)
+
+Re-implementing the edit feature with fixes for previous issues (missing name attributes and null rendering).
+
+## Proposed Changes
+
+### Server
+#### [MODIFY] [server.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/server.js)
+- Re-add `PUT /api/borrowers/:id` endpoint.
+
+### UI
+#### [MODIFY] [index.html](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/index.html)
+- Add `name` attributes to all borrower form inputs.
+- Add hidden `#bId` input and `#bCancelBtn`.
+- Set ID `#bSubmitBtn` for the submit button.
+
+### Logic
+#### [MODIFY] [app.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/js/app.js)
+- Handle form population with safety checks for null/undefined values.
+- Handle dual-mode submission (Add/Update).
+- Add Edit buttons to the borrower list rows.
+
+## Verification Plan
+
+### Manual Verification
+1. Add a borrower.
+2. Edit the borrower, change name/amount.
+3. Save and verify the list updates correctly.
+4. Test "Cancel" button.
+5. Verify that special characters or empty optional fields (Address/Age) don't crash the list.

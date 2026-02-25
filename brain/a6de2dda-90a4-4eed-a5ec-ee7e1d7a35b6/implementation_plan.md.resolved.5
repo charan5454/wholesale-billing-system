@@ -1,0 +1,49 @@
+# UI Refinement - Manage Products Page
+
+Improve the aesthetic of the "Manage Products" page to move away from a "boxy" look and create a more premium, unified dashboard experience.
+
+## Proposed Changes
+
+### [Component] ManageProducts.jsx
+
+#### [MODIFY] [ManageProducts.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/ManageProducts.jsx)
+- **Layout Refactoring**:
+    - Use a more cohesive container that groups "Add New Item" and "All Products" naturally.
+    - Improve spacing and alignment between the form and the list.
+- **Enhanced Card Styles**:
+    - Softer shadows and more subtle borders for the `.glass` cards.
+    - Add a gradient header area or consistent padding to make it feel less like separate boxes.
+- **Premium Table Design**:
+    - Remove standard table borders.
+    - Use row separation with subtle backgrounds or borders.
+    - Add hover effects to rows.
+    - Style "Price" with a more prominent font or color.
+- **Button Styling**:
+    - Redesign "Edit" and "Delete" buttons to be cleaner.
+    - Use subtle color hints (e.g., light blue for edit, soft red for delete) instead of harsh backgrounds.
+- **Input Refinement**:
+    - Ensure all inputs have consistent padding and focus animations.
+    - Improve the "Add Product" button to feel more primary and impactful.
+
+---
+
+## [PHASE 2] Billing UI & UX Refinement
+
+Address feedback regarding input visibility, box sizing, and numerical input behavior.
+
+### [MODIFY] [Billing.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/Billing.jsx)
+
+- **Input Visibility**: (Already applied) Ensure inputs in the table have a subtle background and border.
+- **QTY Box Width**: Increase the width of the `qty-cell` to provide more space for larger quantities.
+- **Vanish Zero Refinement**: Ensure that all numerical inputs (Quantity, Price, Discount, Paid Today) clear the `0` value on focus for a smoother typing experience.
+
+### [MODIFY] [ManageProducts.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/ManageProducts.jsx)
+
+- **Input Visibility**: Apply similar border/background styling to `edit-input` for consistency.
+
+## Verification Plan
+
+### Manual Verification
+- View "Generate Bill" and check QTY box width.
+- Click into QTY, Price, or Discount fields and verify the `0` disappears automatically.
+- Check "Manage Products" to ensure edit inputs are visible.

@@ -1,0 +1,10 @@
+# PWA Conversion Task
+
+- [/] Initialize PWA documents
+- [ ] Create `manifest.json` in `public/`
+- [ ] Generate app icons (`icon-192.png`, `icon-512.png`)
+- [ ] Link manifest and set theme-color in [index.html](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/index.html)
+- [ ] Create `service-worker.js` in `public/`
+- [ ] Register service worker in [js/app.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/js/app.js)
+- [ ] Verify PWA functionality
+- [ ] Create `walkthrough.md`

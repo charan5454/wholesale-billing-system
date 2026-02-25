@@ -1,0 +1,23 @@
+# Implementation Plan: Refine Mobile Responsiveness
+
+The goal is to improve the appearance of "Kanamoni's Interest Calculator" on mobile devices by making it larger and better aligned, without affecting the desktop experience.
+
+## Proposed Changes
+
+### [Component Name] [interest-calculator]
+
+#### [MODIFY] [index.html](file:///c:/Users/kanam/OneDrive/AntigravityCodes/interest-calculator/public/index.html)
+- Add `viewport-fit=cover` to the `viewport` meta tag to ensure the application displays correctly on phones with notches, preventing content from being cut off or poorly aligned.
+
+#### [MODIFY] [style.css](file:///c:/Users/kanam/OneDrive/AntigravityCodes/interest-calculator/public/css/style.css)
+- Inside the `@media (max-width: 576px)` block:
+    - Increase `.navbar-brand` `font-size` from `1.0rem` to `1.4rem`.
+    - Add `padding-top: 15px` to `.navbar-brand` to align it "somewhat down".
+    - Increase navbar padding to provide more breathing room.
+
+## Verification Plan
+
+### Manual Verification
+- Resize the browser to mobile width (less than 576px) and check the navbar brand size and alignment.
+- Verify that the desktop view remains unchanged (font size should be as before).
+- Examine the spacing around the status bar/notch (if possible via simulator or mental model of `viewport-fit=cover`).

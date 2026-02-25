@@ -1,0 +1,56 @@
+# Interest Calculator Implementation Plan
+
+## Goal Description
+Build a responsive full-stack Interest Calculator web application. Users can calculate Simple Interest, Compound Interest, and EMI, visualize growth with charts, and download reports. Registered users can save calculations.
+
+## User Review Required
+> [!IMPORTANT]
+> **Database Requirement**: This project requires a running **MySQL** server. Please ensure you have MySQL installed and running, and update the database connection credentials in [.env](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/.env) (or config) once generated.
+> **Node.js**: I will use Node.js for the backend. Ensure Node.js and npm are installed.
+
+## Proposed Changes
+I will create a new directory `interest-calculator` to contain the project.
+
+### Backend (Node.js/Express)
+- **[server.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/server.js)**: Main entry point, API routes.
+- **[database.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/database.js)**: MySQL connection logic.
+- **`routes/auth.js`**: Login/Register endpoints.
+- **`routes/calculator.js`**: Calculation handling and history saving.
+
+### Database (MySQL)
+- **Schema**:
+    - `users` table: `id`, `username`, `password_hash`, `created_at`
+    - `history` table: `id`, `user_id`, `type`, `principal`, `rate`, `time`, `result`, [date](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/js/app.js#289-302)
+    - `borrowers` table: `id`, `user_id`, `name`, `village`, `age`, `amount`, `rate`, `rate_unit`, `given_at`
+
+### Backend (Node.js/Express)
+- **[server.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/server.js)**: Main entry point, API routes.
+- **`routes/borrowers.js`**: (New) Endpoints for adding/listing borrowers.
+    - `POST /api/borrowers`: Add new borrower.
+    - `GET /api/borrowers`: List all borrowers for user.
+    - `PUT /api/borrowers/:id`: (New) Update borrower details.
+    - `POST /api/borrowers/:id/calculate`: Calculate interest for specific borrower up to today.
+
+### Frontend (HTML/Bootstrap/JS)
+- **[public/index.html](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/index.html)**: Add "Borrower Manager" tab/section.
+- **[public/js/app.js](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/js/app.js)**: Add logic to fetch borrowers and populate calculator.
+
+## Verification Plan
+### [Borrower Management]
+- **Feature**: Downloadable Settlement Report.
+- **Implementation**: Add a "Download PDF" button to the `borrowerCalcResult` section.
+- **Library**: Use `jspdf` (already included for main calculator) to generate a professional PDF with principal, interest, time period (30/360), and total.
+### [UI/UX Refinement]
+- **Theme**: Ultra-modern Dark Glassmorphism.
+- **Palette**: Deep Navy/Indigo backgrounds with vibrant accents (Cyan, Violet).
+- **Typography**: Inter (already linked) with improved hierarchy and letter spacing.
+- **Interactions**: Smooth CSS transitions, hover scales, and glass-blur effects.
+### Automated Tests
+- None planned for this mini-project, but I will provide a script to test DB connection.
+### Manual Verification
+- **Functional**:
+    - Calculate SI, CI, EMI and check accuracy.
+    - Check Charts rendering.
+    - Register a user, log in, save a calculation, view it in history.
+    - Download PDF.
+- **Responsive**: Check UI on mobile/desktop view sizes.

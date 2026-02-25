@@ -1,0 +1,34 @@
+# Implementation Plan - Dedicated Product Management
+
+Establish a clear separation of concerns by moving product management to its own dedicated tab and refining the billing workflow.
+
+## Proposed Changes
+
+### [New Product Management Component](file:///c:/Users/kanam/..gemini/antigravity/scratch/wholesale-vendor-system/src/components/ProductManagement.jsx)
+- [NEW] Create `ProductManagement.jsx` to handle additions, edits, and deletions of products and their default prices.
+- [NEW] Implement the "vanish zero" logic for the price input field.
+
+### [App Navigation](file:///c:/Users/kanam/..gemini/antigravity/scratch/wholesale-vendor-system/src/App.jsx)
+- [MODIFY] Add a new sidebar link for "Manage Items".
+- [MODIFY] Add logic to render the `ProductManagement` component when the tab is active.
+
+### [Billing Component](file:///c:/Users/kanam/..gemini/antigravity/scratch/wholesale-vendor-system/src/components/Billing.jsx)
+- [MODIFY] Remove the embedded "Manage Products" section.
+- [MODIFY] Ensure selecting a product from the list auto-fills the price reliably.
+- [MODIFY] Refine total due amount display to be more prominent.
+
+## Verification Plan
+
+### Manual Verification
+1. **Manage Items**:
+   - Navigate to the new "Manage Items" tab.
+   - Add "Bread" with price "35".
+   - Edit the price to "40".
+   - Delete a test item.
+2. **Billing**:
+   - Go to "Generate Bill".
+   - Select a vendor.
+   - Verify "Previous Due" is shown.
+   - Add a row and select "Bread". Verify price "40" is auto-filled.
+   - Click on price field; verify `0` vanishes.
+   - Leave some rows empty and click "Generate Bill". Verify success.

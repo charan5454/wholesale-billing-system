@@ -1,0 +1,85 @@
+# UI Refinement - Manage Products Page
+
+Improve the aesthetic of the "Manage Products" page to move away from a "boxy" look and create a more premium, unified dashboard experience.
+
+## Proposed Changes
+
+### [Component] ManageProducts.jsx
+
+#### [MODIFY] [ManageProducts.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/ManageProducts.jsx)
+- **Layout Refactoring**:
+    - Use a more cohesive container that groups "Add New Item" and "All Products" naturally.
+    - Improve spacing and alignment between the form and the list.
+- **Enhanced Card Styles**:
+    - Softer shadows and more subtle borders for the `.glass` cards.
+    - Add a gradient header area or consistent padding to make it feel less like separate boxes.
+- **Premium Table Design**:
+    - Remove standard table borders.
+    - Use row separation with subtle backgrounds or borders.
+    - Add hover effects to rows.
+    - Style "Price" with a more prominent font or color.
+- **Button Styling**:
+    - Redesign "Edit" and "Delete" buttons to be cleaner.
+    - Use subtle color hints (e.g., light blue for edit, soft red for delete) instead of harsh backgrounds.
+- **Input Refinement**:
+    - Ensure all inputs have consistent padding and focus animations.
+    - Improve the "Add Product" button to feel more primary and impactful.
+
+---
+
+## [PHASE 2] Billing UI & UX Refinement
+
+Address feedback regarding input visibility, box sizing, and numerical input behavior.
+
+### [MODIFY] [Billing.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/Billing.jsx)
+
+- **Input Visibility**: (Already applied) Ensure inputs in the table have a subtle background and border.
+- **QTY Box Width**: Increase the width of the `qty-cell` to provide more space for larger quantities.
+- **Vanish Zero Refinement**: Ensure that all numerical inputs (Quantity, Price, Discount, Paid Today) clear the `0` value on focus for a smoother typing experience.
+
+### [MODIFY] [ManageProducts.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/ManageProducts.jsx)
+
+- **Input Visibility**: Apply similar border/background styling to `edit-input` for consistency.
+
+---
+
+## [PHASE 4] Invoice Printing & Formatting
+
+Implement a professional, paper-like format for downloading/printing bills.
+
+### [MODIFY] [index.css](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/index.css)
+
+- Add `@media print` styles to:
+    - Hide sidebar, top-bar, and form elements.
+    - Show the dedicated print invoice section.
+    - Style the invoice for A4 paper (black text on white background, sharp borders).
+
+### [MODIFY] [Billing.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/Billing.jsx)
+
+- **Invoice Component**: Add a hidden `div` that formats the bill data for printing.
+- **Print Logic**:
+    - Update [handleSubmit](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/Billing.jsx#97-143) to trigger `window.print()` after saving.
+    - Ensure all required fields (Shop Name, Previous Due, Items, Paid Today, New Balance) are mapped.
+
+---
+
+## [PHASE 5] Vendor Statement Printing
+
+Implement a comprehensive, printable "Statement of Account" for vendors that includes all historical purchases and payments.
+
+### [MODIFY] [VendorDetails.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/VendorDetails.jsx)
+
+- **Printable Statement**: Add a `.print-only` section that formats all history for printing.
+- **Detailed History**:
+    - List every bill with its full items list expanded by default for print.
+    - List every manual payment.
+    - Show clearly the "Total Pending Balance" as of the printing date.
+- **Header formatting**: Standardize the shop name and contact info at the top for professional look.
+
+## Verification Plan
+
+### Manual Verification
+- Navigate to a Vendor's details page.
+- Click "Download Report (Print)".
+- Verify that *all* bills and *all* items within those bills are visible in the print preview.
+- Verify that the payment history is also included.

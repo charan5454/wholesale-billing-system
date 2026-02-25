@@ -1,0 +1,34 @@
+# Walkthrough - Dedicated Product Management & Billing
+
+I have implemented a dedicated **Manage Products** tab to simplify inventory management and billing.
+
+## Key Changes
+
+### 1. Dedicated "Manage Products" Tab
+A new tab has been added to the sidebar, directly below **Generate Bill**. This section allows you to:
+- **Add Items**: Input a name and default price for products.
+- **Edit/Delete**: Update prices or remove items as your inventory changes.
+- **Automatic Zeros**: When adding or editing prices, the `0` will automatically clear when you click on the field.
+
+### 2. Streamlined Billing & Auto-Fill
+The **Generate Bill** tab is now cleaner and works seamlessly with your product list:
+- **Auto-Fill Price**: When you select or type a product name that exists in your list, the saved price is automatically filled into the bill.
+- **Smart Suggestions**: The product name field now shows a dropdown of all your managed products and their prices.
+- **Improved Due Amount**: The "Total Payable" and "New Balance Due" labels are more prominent, clearly showing how current purchases affect the vendor's total debt.
+
+### 3. UX Enhancements
+- **Multi-Row Logic**: You can add many rows and only fill some; the system ignores empty rows during save.
+- **Vanish Zero**: All numeric fields (Quantities, Prices, Discounts, Paid Amount) automatically clear `0` values when focused.
+
+## Verification Steps
+
+1. **Manage Products**:
+   - Go to "Manage Products" in the sidebar.
+   - Add a product "Milk" with price "60".
+2. **Generate Bill**:
+   - Go to "Generate Bill".
+   - Select any vendor.
+   - In the first row, type "Milk" or select it from the dropdown.
+   - Observe the price "60" is filled automatically.
+   - Enter quantity "2" and see the row total update to "120".
+   - Click "Generate & Save Bill" and verify the success message.

@@ -1,0 +1,33 @@
+# Walkthrough - Friend Key Removal
+
+I have removed the "Friend Key" locking mechanism to simplify the application and make all features accessible by default.
+
+## Changes Made
+
+### Sidebar Simplification
+Removed the "Friend's Key" input and "Unlock" button from the sidebar in [App.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/App.jsx).
+
+### Unified Access
+Modified [UnifiedVendors.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/UnifiedVendors.jsx) to remove the locking logic. The billing form is now visible and active for all vendors immediately upon selection.
+
+### Enhanced Layout & Visibility (Final Fix)
+- **Curbing Sidebar**: Reduced sidebar width from `250px` to `220px` to reclaim screen space.
+- **Flexible Grid**: Updated the Vendors page to use a more flexible grid (`minmax`) that adapts better to different browser sizes.
+- **Early Stacking**: Increased the mobile-mode breakpoint to **1200px** so the layout stacks vertically on tablets and smaller laptops instead of getting "squashed".
+- **Numeric Safety**: Added checks to ensure that if an input is left blank, the summary still displays `0` instead of disappearing or showing error values.
+- **Improved Alignment**: Ensured all summary values (Final Total, Remaining Balance) are strictly aligned and never pushed out of view.
+
+### Item Name Suggestions
+- Implemented a dropdown/suggestion list for the "Item Name" field.
+- Fast selection for common items: **Milk**, **Biscuits**, and **Eggs**.
+
+## Verification Results
+
+### Manual Checks
+- [x] Sidebar no longer contains locking UI.
+- [x] Vendors tab loads the billing form directly without requiring a passcode.
+- [x] All price adjustment features (Normal vs. Settled Price) are fully functional.
+- [x] Typing "M" in Item Name shows "Milk" as a suggestion.
+- [x] Summary values are clearly aligned and visible.
+
+The development server is still running at [http://localhost:5173/](http://localhost:5173/).

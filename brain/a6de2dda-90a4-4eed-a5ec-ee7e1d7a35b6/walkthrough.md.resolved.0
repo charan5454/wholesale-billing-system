@@ -1,0 +1,28 @@
+# Walkthrough - Local Implementation
+
+The application has been started on localhost. However, due to a technical limitation with the browser tool, automated verification could not be completed.
+
+## Changes Made
+
+No code changes were requested or made, as the project was already in the desired state.
+
+## Verification Results
+
+### Development Server
+The development server was started successfully using `npm run dev`.
+
+### Browser Verification
+> [!WARNING]
+> The automated browser tool failed to initialize due to a system environment error (`$HOME environment variable is not set`).
+
+### Manual Action Required
+Please open your browser and navigate to the following URL to verify the application:
+- **URL**: [http://localhost:5173](http://localhost:5173)
+
+**What to check:**
+1. **Sidebar**: Verify that "Dashboard", "Shops", and "Generate Bill" are present.
+2. **Billing Tab**:
+   - Go to "Generate Bill".
+   - Click "+ Add Row".
+   - Start typing "Milk", "Biscuits", or "Eggs" in the "Product Name" field.
+   - Verify that these suggestions appear in a dropdown.

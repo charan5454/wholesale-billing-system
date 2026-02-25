@@ -1,0 +1,24 @@
+# Remove Friend Key Activation
+
+Remove the "friend key" locking mechanism to make the system fully accessible by default.
+
+## Proposed Changes
+
+### Frontend Components
+
+#### [MODIFY] [App.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/App.jsx)
+- Remove `isFriendMode` and `password` state.
+- Remove [handleUnlock](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/App.jsx#11-19) function.
+- Remove the "Friend's Key" lock UI from the sidebar.
+- Stop passing `isLocked` to [UnifiedVendors](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/UnifiedVendors.jsx#4-393).
+
+#### [MODIFY] [UnifiedVendors.jsx](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/components/UnifiedVendors.jsx)
+- Remove `isLocked` prop.
+- Remove the conditional rendering that displays the "Locked" card.
+
+## Verification Plan
+
+### Manual Verification
+- Verify that the sidebar no longer shows the "Friend's Key" input.
+- Verify that the "Vendors" tab is immediately accessible without any locking message.
+- Verify that items can be added and bills can be saved without unlocking.

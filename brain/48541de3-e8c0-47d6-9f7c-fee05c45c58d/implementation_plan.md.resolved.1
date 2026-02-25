@@ -1,0 +1,23 @@
+# Implementation Plan: Fix Login Modal and PDF Download
+
+The goal is to fix the visibility of the login modal on mobile and ensure the PDF download works correctly.
+
+## Proposed Changes
+
+### [Component Name] [interest-calculator]
+
+#### [MODIFY] [style.css](file:///c:/Users/kanam/OneDrive/AntigravityCodes/interest-calculator/public/css/style.css)
+- Reduce `z-index` of `.bg-dark-glass` and `.navbar-collapse` to `1030` and `1031` respectively. This ensures they stay below Bootstrap's modal backdrop (1050) and modal content (1055).
+- Ensure `.form-control` has sufficient contrast within modals.
+
+#### [MODIFY] [app.js](file:///c:/Users/kanam/OneDrive/AntigravityCodes/interest-calculator/public/js/app.js)
+- Add logic to close the navbar collapse when a navigation link is clicked on mobile.
+- In `downloadPdf` and `downloadBorrowerPdf`, replace the Rupee symbol (`₹`) with `Rs.` before passing strings to `jsPDF.text()`. This prevents encoding errors that block the download.
+
+## Verification Plan
+
+### Manual Verification
+- **Modal Visibility**: Open the login modal on mobile. Verify that the navbar menu is NOT covering it and that the input fields/labels are clearly visible.
+- **PDF Download**: Perform a calculation and click "Download Report". Verify that the PDF is generated and downloaded successfully.
+- **Navbar Auto-close**: Click any link in the mobile navbar. Verify that the menu closes automatically.
+

@@ -1,0 +1,30 @@
+# Walkthrough - Premium Inventory & Billing
+
+I have completed the premium redesign for both the **Manage Products** and **Generate Bill** pages, ensuring a unified, modern, and high-performance user experience.
+
+## Visual & Functional Upgrades
+
+### 1. Unified Premium Styling
+- **Glassmorphism**: Applied consistent glass backgrounds, soft borders, and backdrop blurs across the entire application.
+- **Improved Visibility**: Fixed "invisible" input fields and dropdown options. No more white-on-white text; all inputs now have a subtle background and clear borders.
+- **Refined Table Design**: Both product and billing tables now feature hover effects, row separation, and prominent pricing tags.
+
+### 2. Billing Refinements (Generate Bill)
+- **Two-Column Layout**: A dedicated sidebar for the **Bill Summary** makes it easier to track totals and balances while adding items.
+- **Enhanced Quantity (QTY) Inputs**: Increased the width of the QTY box to 140px for better readability and easier selection.
+- **Robust "Vanish Zero" Logic**: Numerical fields (Quantity, Price, Discount, Paid Today) now automatically clear the `0` value on focus, making it effortless to enter new data.
+- **Auto-Fill Pricing**: Selecting or typing a recognized product name automatically pulls the default price from your inventory.
+
+### 3. Dedicated Product Inventory
+- **Manage Products Tab**: A new, dedicated section for CRUD operations on products, keeping your billing interface clean.
+- **Consistently Premium**: Mirroring the design of the billing page for a cohesive "Dashboard" experience.
+
+## Bug Fixes
+- **Dropdown Visibility**: Fixed a critical issue where vendor selection options were white-on-white. They are now dark-themed and fully readable.
+- **Focus States**: Improved input focus styling with an accent-color glow for better accessibility.
+
+## Verification
+
+1. **Test Billing**: Navigate to **Generate Bill**. Click into any `0` field—it should vanish instantly. Notice the larger QTY box and the visible input rectangles.
+2. **Test Inventory**: Open **Manage Products**. Add/Edit items and observe the professional UI and consistent input styling.
+3. **Verify Dropdowns**: Open the "Select Vendor" menu in Billing and confirm all shop names are clearly visible.

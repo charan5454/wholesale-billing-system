@@ -1,0 +1,46 @@
+# Visibility and Branding Update Walkthrough
+
+I have updated the application branding and improved input visibility as requested.
+
+## Changes Made
+
+### Branding
+- Named the application **Kanamoni's Interest Calculator** in the page title and navigation bar.
+
+### Styles & Defaults
+- Set all input placeholder text to a vibrant **GREEN** (`#4ade80`) for better visibility.
+- Set default values for **Principal**, **Rate**, **Age**, and **Time** to `0` in all forms (Main Calculator and Add Borrower).
+- Set the default **Rate Unit** to `₹ / Mo` everywhere.
+- Maintained `color-scheme: dark` for date inputs to ensure browser elements are legible.
+- Slightly improved label contrast for better accessibility.
+
+### UI Refinements
+- Renamed **Village** to **Address** in the borrower form and list for better clarity.
+- Restored text placeholders (**Age**, **Amount**, **Rate**) in the borrower form, removing the `0` default to show the labels more clearly in green.
+- **Reordered Fields**: The borrower form now follows a more logical order: Name -> Address -> Age -> Amount -> Rate -> Date.
+- Hidden the **History** tab from the main navigation.
+- **Fixed Script Crash**: Updated `app.js` to prevent a Javascript error that occurred when the "History" tab was removed, which was previously causing the "Borrowers" tab to stay hidden.
+- **Restored Navigation**: Restored the **Calculator** link in the navbar which was accidentally removed.
+- **Edit Borrower Feature**: Added an "Edit" button (pencil icon) to each borrower record. Clicking it populates the form with existing details, allowing for quick corrections. The form switches to "Update" mode with a "Cancel" option.
+- **Repayment Status**: Added an "Is Repaid" column to the borrower list with a YES/NO dropdown to toggle the status of each loan.
+- **Status Filtering**: A new "Status" menu in the navigation bar allows filtering the list by Repaid (YES), Unpaid (NO), or ALL borrowers.
+- **Robust Rendering**: Fixed a bug where the borrower list failed to load if some data (like Name or Address) was null or had special characters. The list is now much more stable.
+- **Data Persistence**: Fixed a bug where updates were resetting values to null due to missing name attributes in the form.
+
+## Final Verification Results
+
+### Backend
+- New `PUT /api/borrowers/:id` endpoint implemented to handle secure updates.
+
+### Frontend
+- Hidden ID field and "Cancel" button added to the borrower form.
+- "Edit" button (pencil icon) added next to the "Calculate" button in the borrower list.
+- Form logic updated to handle both additions and updates dynamically.
+
+### UI Elements in [index.html](file:///c:/Users/kanam/OneDrive/Antigravity%20Codes/interest-calculator/public/index.html)
+- `placeholder="Address"` applied to village input.
+- `value="0"` removed from borrower form inputs to show green placeholders.
+- `#nav-history` removed from navbar (hidden).
+
+
+These changes ensure that the text "Name", "Village", "Age", etc., are now clearly visible as placeholders when the input boxes are empty.

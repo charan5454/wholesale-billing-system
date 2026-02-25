@@ -1,0 +1,46 @@
+# Interest Calculator Task List
+
+- [x] **Project Setup**
+    - [x] Create project directory and initialize Node.js project
+    - [x] Install dependencies (Express, MySQL2, etc.)
+    - [x] Set up database schema (MySQL)
+- [x] **Frontend Development**
+    - [x] Create main layout with HTML5 and Bootstrap 5
+    - [x] Implement Calculator UI (Forms for Principal, Rate, Time, Type)
+    - [x] Add Charts.js for visualization
+    - [x] Implement PDF download feature
+- [x] **Backend Development**
+    - [x] Create API endpoints for calculation (Client-Server architecture)
+    - [x] Implement Authentication (Register/Login)
+    - [x] Implement History saving/retrieving
+- [x] **Verification**
+    - [x] Verify calculations (Simple, Compound, EMI)
+    - [x] Verify User Auth and DB storage
+    - [x] Verify Responsive Design
+- [x] **Feature: Interest in Rupees**
+    - [x] Update UI to toggle between % p.a. and ₹ per month
+    - [x] Update Backend to handle monthly interest rate conversion
+    - [x] Refactor calculation logic to "30/360 Standard" (Treat every month as 30 days)
+    - [/] Implement "Download Report" for borrower settlements (PDF)
+    - [/] Polish UI/UX (Premium Glassmorphism, Modern Typography, Animations)
+    - [x] Verify calculations with new rate type
+- [x] **Feature: Borrower Management**
+    - [x] Update DB Schema (Add 'borrowers' table)
+    - [x] Create Backend API (CRUD for borrowers)
+    - [x] Update Frontend (Add/List Borrowers page)
+- [x] **Feature: Borrower Management**
+    - [x] Update DB Schema (Add 'borrowers' table)
+    - [x] Create Backend API (CRUD for borrowers)
+    - [x] Update Frontend (Add/List Borrowers page)
+    - [x] Implement "Click to Calculate" logic (Auto-fill calculator with days elapsed)
+    - [x] Implement validation (Edit functionality)
+- [x] **Debugging & Fixes**
+    - [x] Fixed "Time" input to allow decimal months (e.g., 7.8)
+    - [x] Fixed Borrower Addition failure by increasing database column size for Rate/Amount
+    - [x] Improved error reporting on both Frontend and Backend
+    - [x] Fixed Authentication "Database Error" (Missing user_id column in borrowers table)
+    - [x] Fixed Interest Calculation Logic (Total Days / 30)
+    - [x] Renamed to "Kanamoni's Interest Calculator"
+    - [x] Fixed date calculation by using verbose month names for display (Prevents DD-MM confusion)
+    - [x] Fixed Ramesh's incorrect Jun 11 date to Nov 6 in Database
+

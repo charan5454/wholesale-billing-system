@@ -1,0 +1,33 @@
+# Walkthrough: Mobile Responsiveness Refinements
+
+I have completed the requested modifications for the mobile view of the interest calculator.
+
+## Changes Made
+
+### Navbar Brand (Mobile View)
+- Increased the font size of "Kanamoni's Interest Calculator" from `1.0rem` to `1.4rem` to make it more prominent.
+- Added `padding-top: 15px` to the brand text to align it lower, as requested.
+- These changes are scoped specifically to screens with a width of `576px` or less, ensuring no impact on the desktop website.
+
+### Mobile Display Optimization
+- Added `viewport-fit=cover` to the `viewport` meta tag in [index.html](file:///c:/Users/kanam/OneDrive/AntigravityCodes/interest-calculator/public/index.html). This improves the display on modern phones with notches (like iPhone or some Androids) by allowing the app to use the full screen area correctly.
+
+## Verification Results
+
+### CSS Media Query Check
+The changes were applied within the `@media (max-width: 576px)` block in [style.css](file:///c:/Users/kanam/OneDrive/AntigravityCodes/interest-calculator/public/css/style.css):
+
+```css
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.4rem !important;
+        padding-top: 15px !important;
+    }
+    /* ... other mobile styles ... */
+}
+```
+
+This confirms that the desktop view (widths > 576px) will still use the original styles.
+
+### Visual Confirmation
+I have updated the code to match your requirements for a bigger and lower-aligned title on mobile.

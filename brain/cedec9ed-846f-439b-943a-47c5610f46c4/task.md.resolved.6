@@ -1,0 +1,19 @@
+# Smart Job Seeking and Hiring Platform - Tasks
+
+- [x] Project Planning & Setup
+  - [x] Define database schema and project structure <!-- id: 0 -->
+  - [x] Create implementation plan <!-- id: 1 -->
+  - [x] Set up directory structure and database connection <!-- id: 2 -->
+- [x] Database Implementation
+  - [x] Create MySQL database and tables (Users, Profiles, Recruiters, Skills) <!-- id: 3 -->
+- [x] Authentication Module
+  - [x] Job Seeker Registration & Login <!-- id: 4 -->
+  - [x] Recruiter Registration & Login <!-- id: 5 -->
+- [x] Job Seeker Features
+  - [x] Profile Creation/Editing (Personal info, Education, Skills, Resume) <!-- id: 6 -->
+- [x] Recruiter Features
+  - [x] Dashboard with Search & Filter by Skills <!-- id: 7 -->
+  - [x] View Candidate Profile <!-- id: 8 -->
+  - [x] Contact Candidate (SMS Notification Integration) <!-- id: 9 -->
+- [x] Verification
+  - [x] Verify User Flows (Registration, Login, Search, Contact) <!-- id: 10 -->

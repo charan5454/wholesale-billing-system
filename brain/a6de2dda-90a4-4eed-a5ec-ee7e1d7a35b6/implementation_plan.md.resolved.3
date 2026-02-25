@@ -1,0 +1,32 @@
+# Implementation Plan - Sidebar Product Management
+
+Add a dedicated "Manage Products" tab to the sidebar, positioned directly below the "Generate Bill" tab, for managing inventory prices and items.
+
+## Proposed Changes
+
+### [Sidebar Updates (App.jsx)](file:///c:/Users/kanam/..gemini/antigravity/scratch/wholesale-vendor-system/src/App.jsx)
+- [MODIFY] Add "Manage Products" to the sidebar navigation below "Generate Bill".
+- [MODIFY] Update the [renderContent](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/App.jsx#11-27) switch to handle the new `manage-products` tab.
+
+### [New Component: ManageProducts.jsx](file:///c:/Users/kanam/..gemini/antigravity/scratch/wholesale-vendor-system/src/components/ManageProducts.jsx)
+- [NEW] Create a standalone component for Adding, Editing, and Deleting products and prices.
+- [NEW] Use [db.js](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/utils/db.js) operations ([addProduct](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/utils/db.js#23-34), [updateProduct](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/utils/db.js#35-40), [deleteProduct](file:///c:/Users/kanam/.gemini/antigravity/scratch/wholesale-vendor-system/src/utils/db.js#41-46)).
+- [NEW] Implement "vanish zero" logic for price inputs.
+
+### [Billing Refinement (Billing.jsx)](file:///c:/Users/kanam/..gemini/antigravity/scratch/wholesale-vendor-system/src/components/Billing.jsx)
+- [MODIFY] Remove the inline product management section.
+- [MODIFY] Ensure `datalist` for product names is consistently populated from the database.
+- [MODIFY] Fine-tune price auto-fill when an item is selected from the dropdown.
+- [MODIFY] Ensure due amount labels are clear and updated after every bill generation.
+
+## Verification Plan
+
+### Manual Verification
+1. **Sidebar Hierarchy**: Confirm "Manage Products" appears below "Generate Bill".
+2. **Product Flow**:
+   - Add an item in "Manage Products".
+   - Switch to "Generate Bill".
+   - Select the item; confirm price is filled automatically.
+3. **Data Integrity**:
+   - Save a bill and check if "Previous Due" increases for that vendor.
+   - Edit a product price and verify new bills use the updated price.

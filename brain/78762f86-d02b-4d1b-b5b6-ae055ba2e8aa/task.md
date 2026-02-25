@@ -1,0 +1,6 @@
+- [x] Research current borrower implementation <!-- id: 0 -->
+- [x] Update default currency to ₹ in `index.html` <!-- id: 1 -->
+- [x] Implement precise date-based interest logic in `app.js` <!-- id: 2 -->
+- [x] Add settlement details display for borrower action <!-- id: 3 -->
+- [x] Diagnose "Failed to load" error (MySQL ECONNREFUSED) <!-- id: 4 -->
+- [ ] User starts MySQL server <!-- id: 5 -->
