@@ -103,6 +103,22 @@ Replace "Wholesale Pro" with a dairy-related logo and theme.
     - Change text from "Wholesale Pro" to "Dairy Pro".
     - Update styling to accommodate the new icon.
 
+---
+
+## [PHASE 9] PWA & Home Screen Shortcut
+
+Enable "Installation" support so the user can add a shortcut to their desktop/home screen.
+
+### [MODIFY] [index.html](file:///C:/Users/kanam/OneDrive/Antigravity%20Codes/wholesale-vendor-system/index.html)
+- Add link to `manifest.webmanifest`.
+- Add script to register a basic service worker.
+
+### [NEW] [manifest.webmanifest](file:///C:/Users/kanam/OneDrive/Antigravity%20Codes/wholesale-vendor-system/public/manifest.webmanifest)
+- Define app name, icons, and display mode ("standalone").
+
+### [NEW] [sw.js](file:///C:/Users/kanam/OneDrive/Antigravity%20Codes/wholesale-vendor-system/public/sw.js)
+- Implement a basic service worker for offline caching and PWA installation.
+
 ## Verification Plan
 
 ### Manual Verification

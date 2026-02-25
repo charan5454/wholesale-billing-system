@@ -1,0 +1,17 @@
+Ä{
+    "name": "Dairy Vendor System",
+    "short_name": "Dairy",
+    "description": "Professional Dairy Wholesale Vendor Management System",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#2563eb",
+    "icons": [
+        {
+            "src": "icon.svg",
+            "sizes": "192x192",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ]
+}Ä*cascade08"(fb2d5543857dc2b4941046b8d268cad1935091d82gfile:///C:/Users/kanam/OneDrive/Antigravity%20Codes/wholesale-vendor-system/public/manifest.webmanifest:Kfile:///C:/Users/kanam/OneDrive/Antigravity%20Codes/wholesale-vendor-system

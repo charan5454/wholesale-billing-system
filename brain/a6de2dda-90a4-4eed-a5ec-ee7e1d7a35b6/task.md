@@ -30,8 +30,10 @@
     - [x] Dynamic filename with Vendor Name & Timestamp
 - [x] Dashboard & Branding
     - [x] Replace "Wholesale Pro" with Dairy Logo (Simple "Dairy" name)
+- [x] Render Deployment Configuration
+    - [x] Create `_static.json` for routing
+    - [x] Set `base: "/"` in `vite.config.js`
+- [x] PWA & Home Screen Shortcut
+    - [x] Create `manifest.webmanifest`
+    - [x] Add Service Worker registration
 - [x] Verification
-    - [x] Verify tab order in Sidebar
-    - [x] Test product CRUD in new tab
-    - [x] Test selection and auto-fill in Billing
-    - [x] Verify due amounts and zero-vanish

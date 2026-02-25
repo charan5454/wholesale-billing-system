@@ -8,7 +8,14 @@ I have successfully implemented a professional, paper-ready printing system for 
 - **Custom Logo**: Replaced the generic "Wholesale Pro" text with a professional **Dairy Logo** (milk bottle SVG icon).
 - **Dairy Identity**: Updated the application name to **Dairy**, creating a specialized identity for your dairy business.
 
-### 2. Professional Tax Invoice
+### 2. App Shortcut & Installation (PWA)
+Now you can use the app like a real software on your computer:
+1. **Easy Installation**: Open your website in **Chrome or Edge**.
+2. **Install Prompt**: You will see an **"Install" icon** (a small computer with an arrow) in the address bar, or you can find "Install Dairy" in the browser menu.
+3. **Home Screen Shortcut**: Click it to create a **"Dairy" shortcut** on your desktop/home screen.
+4. **Native Experience**: When you open the shortcut, the app will open in its own clean window without any browser bars.
+
+### 3. Professional Tax Invoice
 - **Official Format**: The printout is formatted as a professional "TAX INVOICE" on a clean white background with sharp black borders.
 - **Shop & Vendor Details**: Automatically includes the **Shop Name** and **Phone Number** at the top.
 - **Detailed Item List**: Presents all items bought in a clean table with Description, Quantity, Price, and Amount.
