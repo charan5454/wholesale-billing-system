@@ -56,31 +56,29 @@ function ManageProducts() {
     return (
         <div className="manage-products-page animate-fade">
             <div className="page-header">
-                <h2>Product Inventory</h2>
-                <p className="subtitle">Manage items and default pricing for billing</p>
+                <h2>📦 Items & Storage</h2>
+                <p className="subtitle">Set names and prices for your products</p>
             </div>
 
             <div className="layout-content">
                 <div className="glass section-card add-product-card">
                     <div className="card-header">
-                        <div className="icon-badge">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M5 12h14" /></svg>
-                        </div>
+                        <div className="icon-badge">➕</div>
                         <h3>Add New Item</h3>
                     </div>
                     <form onSubmit={handleAddProduct} className="product-form">
                         <div className="form-group">
-                            <label>Product Name</label>
+                            <label className="simple-label">Item Name</label>
                             <input
                                 type="text"
-                                placeholder="e.g. Fresh Milk 1L"
+                                placeholder="e.g. Milk"
                                 value={newProduct.name}
                                 onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
                                 required
                             />
                         </div>
                         <div className="form-group">
-                            <label>Default Price (₹)</label>
+                            <label className="simple-label">Price per Item (₹)</label>
                             <div className="price-input-wrapper">
                                 <span className="currency-symbol">₹</span>
                                 <input
@@ -94,25 +92,24 @@ function ManageProducts() {
                                 />
                             </div>
                         </div>
-                        <button type="submit" className="btn-primary full-width">
-                            <span>Add to Inventory</span>
+                        <button type="submit" className="btn-primary full-width btn-large">
+                            <span>✅ Save to List</span>
                         </button>
                     </form>
                 </div>
 
                 <div className="glass section-card list-product-card">
                     <div className="card-header">
-                        <div className="icon-badge">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 3h18v18H3zM3 9h18M9 3v18" /></svg>
-                        </div>
-                        <h3>Current Stock Items</h3>
+                        <div className="icon-badge">📋</div>
+                        <h3>Your Items List</h3>
                     </div>
                     <div className="product-list-container">
-                        <table className="product-table">
+                        {/* Desktop Table */}
+                        <table className="product-table desktop-only">
                             <thead>
                                 <tr>
                                     <th>Item Details</th>
-                                    <th>Unit Price</th>
+                                    <th>Price</th>
                                     <th style={{ textAlign: 'right' }}>Actions</th>
                                 </tr>
                             </thead>
@@ -129,7 +126,6 @@ function ManageProducts() {
                                             ) : (
                                                 <div className="product-info">
                                                     <span className="product-name">{p.name}</span>
-                                                    <span className="product-id">ID: {p.id.slice(-6)}</span>
                                                 </div>
                                             )}
                                         </td>
@@ -139,10 +135,7 @@ function ManageProducts() {
                                                     <span className="currency-symbol">₹</span>
                                                     <input
                                                         type="number"
-                                                        step="0.01"
                                                         value={editingProduct.price}
-                                                        onFocus={handleVanishZero}
-                                                        onBlur={(e) => handleRestoreZero(e, setEditingProduct, editingProduct, 'price')}
                                                         onChange={(e) => setEditingProduct({ ...editingProduct, price: e.target.value })}
                                                     />
                                                 </div>
@@ -153,34 +146,36 @@ function ManageProducts() {
                                         <td>
                                             <div className="actions">
                                                 {editingProduct?.id === p.id ? (
-                                                    <button className="btn-icon save" title="Save Changes" onClick={handleUpdateProduct}>
-                                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 6L9 17l-5-5" /></svg>
-                                                    </button>
+                                                    <button className="btn-icon save" onClick={handleUpdateProduct}>💾</button>
                                                 ) : (
                                                     <>
-                                                        <button className="btn-icon edit" title="Edit Item" onClick={() => setEditingProduct(p)}>
-                                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
-                                                        </button>
-                                                        <button className="btn-icon delete" title="Delete Item" onClick={() => handleDeleteProduct(p.id)}>
-                                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" /></svg>
-                                                        </button>
+                                                        <button className="btn-icon edit" onClick={() => setEditingProduct(p)}>✏️</button>
+                                                        <button className="btn-icon delete" onClick={() => handleDeleteProduct(p.id)}>🗑️</button>
                                                     </>
                                                 )}
                                             </div>
                                         </td>
                                     </tr>
                                 ))}
-                                {products.length === 0 && (
-                                    <tr>
-                                        <td colSpan="3" className="empty-state">
-                                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.3"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
-                                            <p>No products in inventory</p>
-                                            <span>Add items on the left to get started</span>
-                                        </td>
-                                    </tr>
-                                )}
                             </tbody>
                         </table>
+
+                        {/* Mobile Cards */}
+                        <div className="mobile-card-list mobile-only" style={{ padding: '1rem' }}>
+                            {products.map(p => (
+                                <div key={p.id} className="mobile-row-card glass">
+                                    <div className="row-header">
+                                        <span className="product-name">{p.name}</span>
+                                        <span className="price-tag">₹{p.price.toLocaleString()}</span>
+                                    </div>
+                                    <div className="card-actions">
+                                        <button className="btn-small glass" onClick={() => setEditingProduct(p)}>✏️ Edit</button>
+                                        <button className="btn-small glass delete-btn" onClick={() => handleDeleteProduct(p.id)}>🗑️ Delete</button>
+                                    </div>
+                                </div>
+                            ))}
+                            {products.length === 0 && <div className="empty-state">No items yet.</div>}
+                        </div>
                     </div>
                 </div>
             </div>

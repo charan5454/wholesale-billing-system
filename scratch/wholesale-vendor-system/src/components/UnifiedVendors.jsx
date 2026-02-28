@@ -96,30 +96,30 @@ function UnifiedVendors({ initialVendorId }) {
     }
 
     return (
-        <div className="unified-vendors">
+        <div className="unified-vendors animate-fade">
             <div className="layout-grid">
                 {/* LEFT COLUMN: HISTORY & SELECT */}
                 <div className="history-column">
                     <div className="glass card selection-card">
                         <div className="form-group">
-                            <label>Choose Shop</label>
+                            <label className="simple-label">🏪 Select Shop</label>
                             <div className="select-row">
                                 <select
                                     value={selectedVendorId}
                                     onChange={(e) => setSelectedVendorId(e.target.value)}
                                 >
-                                    <option value="">-- Select Shop --</option>
+                                    <option value="">-- Choose Shop --</option>
                                     {vendors.map(v => (
                                         <option key={v.id} value={v.id}>{v.shopName}</option>
                                     ))}
                                 </select>
-                                <button className="btn-small glass" onClick={() => setShowAddModal(true)}>+</button>
+                                <button className="btn-small glass" onClick={() => setShowAddModal(true)}>➕</button>
                             </div>
                         </div>
                     </div>
 
                     <div className="glass card history-card">
-                        <h3>Recent Purchases</h3>
+                        <h3>📜 Old Bill History</h3>
                         <div className="history-scroll">
                             {history.length > 0 ? history.map(bill => (
                                 <div key={bill.id} className="history-item">
@@ -144,8 +144,8 @@ function UnifiedVendors({ initialVendorId }) {
                 <div className="billing-column">
                     <div className="glass card billing-card">
                         <div className="card-header">
-                            <h3>New Entry {selectedVendorId ? `for ${vendors.find(v => v.id === selectedVendorId)?.shopName}` : ''}</h3>
-                            <button type="button" className="btn-small glass" onClick={addItemRow}>+ Add Item</button>
+                            <h3>📝 Add New Entries {selectedVendorId ? `for ${vendors.find(v => v.id === selectedVendorId)?.shopName}` : ''}</h3>
+                            <button type="button" className="btn-small glass" onClick={addItemRow}>➕ Add Item</button>
                         </div>
 
                         <form onSubmit={handleSubmit}>
@@ -153,25 +153,26 @@ function UnifiedVendors({ initialVendorId }) {
                                 {billData.items.map((item, index) => (
                                     <div key={index} className="item-input-row">
                                         <div className="input-field">
-                                            <label>Item Name</label>
+                                            <label className="simple-label">Item Name</label>
                                             <input
                                                 type="text"
                                                 value={item.name}
                                                 onChange={(e) => updateItem(index, 'name', e.target.value)}
                                                 required
                                                 list="item-suggestions"
+                                                placeholder="e.g. Milk"
                                             />
                                         </div>
                                         <div className="input-field narrow">
-                                            <label>Qty</label>
+                                            <label className="simple-label">Qty</label>
                                             <input type="number" value={item.quantity} onChange={(e) => updateItem(index, 'quantity', e.target.value)} />
                                         </div>
                                         <div className="input-field">
-                                            <label>Normal Price</label>
+                                            <label className="simple-label">Normal Price</label>
                                             <input type="number" value={item.price} onChange={(e) => updateItem(index, 'price', e.target.value)} />
                                         </div>
                                         <div className="input-field">
-                                            <label>Settled Price</label>
+                                            <label className="simple-label">Final Price</label>
                                             <input type="number" className="highlight-input" value={item.settledPrice} onChange={(e) => updateItem(index, 'settledPrice', e.target.value)} />
                                         </div>
                                     </div>
@@ -180,27 +181,27 @@ function UnifiedVendors({ initialVendorId }) {
 
                             <div className="summary-section">
                                 <div className="summary-line">
-                                    <span>Subtotal:</span>
+                                    <span>Pura Paisa:</span>
                                     <span>₹{calculateSubTotal()}</span>
                                 </div>
                                 <div className="summary-line deduction">
-                                    <span>Deduction (Correction):</span>
+                                    <span>Kam kiya (Correction):</span>
                                     <span>-₹{calculateDeduction()}</span>
                                 </div>
                                 <div className="summary-line total">
                                     <span>Final Total:</span>
                                     <span>₹{totalAfterDeduction}</span>
                                 </div>
-                                <hr />
+                                <hr style={{ opacity: 0.1, margin: '1rem 0' }} />
                                 <div className="form-group-horizontal">
-                                    <label>Amount Paid Today:</label>
-                                    <input type="number" value={billData.paidToday} onChange={(e) => setBillData({ ...billData, paidToday: parseFloat(e.target.value) || 0 })} />
+                                    <label className="simple-label">Cash Paid Today:</label>
+                                    <input type="number" className="highlight-input large" value={billData.paidToday} onChange={(e) => setBillData({ ...billData, paidToday: parseFloat(e.target.value) || 0 })} />
                                 </div>
                                 <div className="summary-line balance">
-                                    <span>Remaining Balance:</span>
+                                    <span>Remaining Baki (Due):</span>
                                     <span className={remainingBalance > 0 ? 'text-danger' : 'text-success'}>₹{remainingBalance}</span>
                                 </div>
-                                <button type="submit" className="btn-primary full-width" disabled={!selectedVendorId}>Save & Update Balance</button>
+                                <button type="submit" className="btn-primary full-width btn-large" disabled={!selectedVendorId}>✅ Save Bill & Update</button>
                             </div>
                         </form>
                     </div>

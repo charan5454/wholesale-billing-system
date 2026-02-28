@@ -61,21 +61,21 @@ function VendorDetails({ vendorId, onBack }) {
   if (!vendor) return <div>Loading...</div>
 
   return (
-    <div className="vendor-details">
+    <div className="vendor-details animate-fade">
       <div className="details-header">
-        <button className="btn-small glass" onClick={onBack}>← Back to List</button>
+        <button className="btn-small glass" onClick={onBack}>⬅️ Back</button>
         <div className="header-info">
-          <h2>{vendor.shopName}</h2>
-          <p className="text-secondary">{vendor.phone} | {vendor.address}</p>
-          <div className="header-actions" style={{ display: 'flex', gap: '1rem' }}>
-            <button className="btn-small glass" onClick={handlePrint}>Download Report (Print)</button>
-            <button className="btn-primary" onClick={() => setShowPaymentModal(true)}>Add Paid Money</button>
+          <h2>🏪 {vendor.shopName}</h2>
+          <p className="text-secondary">📞 {vendor.phone} | 📍 {vendor.address}</p>
+          <div className="header-actions">
+            <button className="btn-small glass" onClick={handlePrint}>🖨️ Get Report</button>
+            <button className="btn-primary" onClick={() => setShowPaymentModal(true)}>💰 Deposit Jama</button>
           </div>
         </div>
       </div>
 
       <div className="balance-banner glass animate-fade">
-        <span className="label">Total Pending Balance</span>
+        <span className="label">Total Baki (Remaining Due)</span>
         <span className={`value ${vendor.pendingBalance > 0 ? 'text-danger' : 'text-success'}`}>
           ₹{vendor.pendingBalance.toLocaleString()}
         </span>
@@ -83,7 +83,7 @@ function VendorDetails({ vendorId, onBack }) {
 
       <div className="history-grid">
         <div className="history-section glass">
-          <h3>Purchase History</h3>
+          <h3>📝 Purchase History</h3>
           <div className="history-list">
             {history.bills.length > 0 ? history.bills.map(bill => (
               <div
@@ -92,8 +92,8 @@ function VendorDetails({ vendorId, onBack }) {
                 onClick={() => setExpandedBillId(expandedBillId === bill.id ? null : bill.id)}
               >
                 <div className="item-main">
-                  <span className="id">{bill.id}</span>
-                  <span className="date">{new Date(bill.date).toLocaleDateString()}</span>
+                  <span className="id">Bill #{bill.id.slice(-4)}</span>
+                  <span className="date">📅 {new Date(bill.date).toLocaleDateString()}</span>
                 </div>
                 <div className="item-stats">
                   <span className="total">Total: ₹{bill.finalAmount.toLocaleString()}</span>
@@ -101,7 +101,7 @@ function VendorDetails({ vendorId, onBack }) {
                 </div>
                 {expandedBillId === bill.id && (
                   <div className="bill-items-details animate-fade">
-                    <hr />
+                    <hr style={{ opacity: 0.1, margin: '1rem 0' }} />
                     <h4>Items Bought:</h4>
                     <table className="mini-table">
                       <thead>
@@ -129,13 +129,13 @@ function VendorDetails({ vendorId, onBack }) {
         </div>
 
         <div className="history-section glass">
-          <h3>Amount paid after purchase</h3>
+          <h3>💵 Payments Received (Jama)</h3>
           <div className="history-list">
             {history.payments.length > 0 ? history.payments.map(payment => (
               <div key={payment.id} className="history-item">
                 <div className="item-main">
-                  <span className="id">{payment.id}</span>
-                  <span className="date">{new Date(payment.date).toLocaleDateString()}</span>
+                  <span className="id">Pay #{payment.id.slice(-4)}</span>
+                  <span className="date">📅 {new Date(payment.date).toLocaleDateString()}</span>
                 </div>
                 <div className="item-stats">
                   <span className="amount text-success">+₹{payment.amount.toLocaleString()}</span>
