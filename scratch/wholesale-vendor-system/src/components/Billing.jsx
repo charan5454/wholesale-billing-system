@@ -126,8 +126,8 @@ function Billing() {
     return (
         <div className="billing-page animate-fade">
             <div className="page-header">
-                <h2>Generate New Bill</h2>
-                <p className="subtitle">Create sales invoices and track vendor payments</p>
+                <h2>📝 New Bill</h2>
+                <p className="subtitle">Add items and collect money</p>
             </div>
 
             <form onSubmit={handleSubmit} className="billing-form">
@@ -135,9 +135,9 @@ function Billing() {
                     <div className="glass section-card vendor-info-section">
                         <div className="card-header">
                             <div className="icon-badge">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="8.5" cy="7" r="4" /><path d="M17 11l2 2 4-4" /></svg>
+                                🏪
                             </div>
-                            <h3>Vendor & Date</h3>
+                            <h3>Shop & Date</h3>
                         </div>
                         <div className="form-row">
                             <div className="form-group">
@@ -147,9 +147,9 @@ function Billing() {
                                     value={formData.vendorId}
                                     onChange={(e) => setFormData({ ...formData, vendorId: e.target.value })}
                                 >
-                                    <option value="">-- Select Vendor --</option>
+                                    <option value="">-- Choose Shop --</option>
                                     {vendors.map(v => (
-                                        <option key={v.id} value={v.id}>{v.shopName} ({v.phone})</option>
+                                        <option key={v.id} value={v.id}>{v.shopName}</option>
                                     ))}
                                 </select>
                             </div>
@@ -164,7 +164,7 @@ function Billing() {
                             </div>
                             {selectedVendor && (
                                 <div className="due-status animate-bounce-in">
-                                    <span className="label">Current Balance</span>
+                                    <span className="label">Old Balance (Debt)</span>
                                     <span className="value">₹{previousDue.toLocaleString()}</span>
                                 </div>
                             )}
@@ -174,21 +174,21 @@ function Billing() {
                     <div className="glass section-card items-section">
                         <div className="card-header">
                             <div className="icon-badge">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" /></svg>
+                                🥛
                             </div>
-                            <h3>Bill Items</h3>
-                            <button type="button" className="btn-small glass add-row-btn" onClick={addItemRow}>
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M12 5v14M5 12h14" /></svg>
-                                Add Row
+                            <h3>Items Added</h3>
+                            <button type="button" className="btn-primary add-row-btn" onClick={addItemRow}>
+                                ➕ Add Item
                             </button>
                         </div>
                         <div className="items-container">
-                            <table className="items-table">
+                            {/* Desktop Table View */}
+                            <table className="items-table desktop-only">
                                 <thead>
                                     <tr>
-                                        <th>Product Name</th>
+                                        <th>Item Name</th>
                                         <th>Qty</th>
-                                        <th>Price/Unit</th>
+                                        <th>Price</th>
                                         <th style={{ textAlign: 'right' }}>Total</th>
                                     </tr>
                                 </thead>
@@ -198,7 +198,7 @@ function Billing() {
                                             <td className="product-cell">
                                                 <input
                                                     type="text"
-                                                    placeholder="Search product..."
+                                                    placeholder="Search item..."
                                                     value={item.name}
                                                     onChange={(e) => updateItem(index, 'name', e.target.value)}
                                                     list="product-suggestions"
@@ -233,6 +233,54 @@ function Billing() {
                                     ))}
                                 </tbody>
                             </table>
+
+                            {/* Mobile Card View */}
+                            <div className="mobile-card-list mobile-only" style={{ padding: '1rem' }}>
+                                {formData.items.map((item, index) => (
+                                    <div key={index} className="mobile-row-card glass">
+                                        <div className="form-group" style={{ marginBottom: '1rem' }}>
+                                            <label className="simple-label">Item Name</label>
+                                            <input
+                                                type="text"
+                                                placeholder="e.g. Milk"
+                                                value={item.name}
+                                                onChange={(e) => updateItem(index, 'name', e.target.value)}
+                                                list="product-suggestions"
+                                            />
+                                        </div>
+                                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                                            <div className="form-group">
+                                                <label className="simple-label">Quantity</label>
+                                                <input
+                                                    type="number"
+                                                    value={item.quantity}
+                                                    onFocus={handleVanishZero}
+                                                    onBlur={(e) => handleRestoreZero(e, 'quantity', index)}
+                                                    onChange={(e) => updateItem(index, 'quantity', e.target.value)}
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <label className="simple-label">Price</label>
+                                                <div className="price-input-wrapper">
+                                                    <span className="currency-symbol" style={{ left: '1rem' }}>₹</span>
+                                                    <input
+                                                        type="number"
+                                                        step="0.01"
+                                                        value={item.price}
+                                                        onFocus={handleVanishZero}
+                                                        onBlur={(e) => handleRestoreZero(e, 'price', index)}
+                                                        onChange={(e) => updateItem(index, 'price', e.target.value)}
+                                                        style={{ paddingLeft: '2.5rem' }}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style={{ textAlign: 'right', marginTop: '1rem', fontWeight: '700', color: 'var(--accent-color)' }}>
+                                            Sub-total: ₹{(item.quantity * item.price).toLocaleString()}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -241,24 +289,24 @@ function Billing() {
                     <div className="glass section-card summary-card sticky-card">
                         <div className="card-header">
                             <div className="icon-badge">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 7h6m-6 4h6m-6 4h6M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z" /></svg>
+                                💰
                             </div>
-                            <h3>Bill Summary</h3>
+                            <h3>Final Calculation</h3>
                         </div>
                         <div className="summary-details">
                             <div className="summary-row">
                                 <span>Sub-Total</span>
                                 <span>₹{calculateTotal().toLocaleString()}</span>
                             </div>
-                            <div className="summary-row important">
-                                <span>Current Bill</span>
+                            <div className="summary-row">
+                                <span>Total for New Items</span>
                                 <span className="accent-text">₹{currentBillTotal.toLocaleString()}</span>
                             </div>
 
                             <div className="divider-glow"></div>
 
                             <div className="summary-row">
-                                <span>Previous Due</span>
+                                <span>Old Balance (Debt)</span>
                                 <span className="danger-text">₹{previousDue.toLocaleString()}</span>
                             </div>
                             <div className="summary-row highlight-box">
@@ -269,12 +317,13 @@ function Billing() {
                             <div className="divider-glow"></div>
 
                             <div className="summary-row">
-                                <span>Paid Today</span>
-                                <div className="price-input-wrapper small">
-                                    <span className="currency-symbol">₹</span>
+                                <span className="simple-label">Money Given Today</span>
+                                <div className="price-input-wrapper">
+                                    <span className="currency-symbol" style={{ left: '1rem' }}>₹</span>
                                     <input
                                         type="number"
                                         className="success-text"
+                                        style={{ paddingLeft: '2.5rem' }}
                                         value={formData.paidToday}
                                         onFocus={handleVanishZero}
                                         onBlur={(e) => handleRestoreZero(e, 'paidToday')}
@@ -284,14 +333,14 @@ function Billing() {
                             </div>
 
                             <div className="summary-row final-due">
-                                <span>New Balance</span>
+                                <span>Remaining Debt</span>
                                 <span className={remainingBalance > 0 ? 'danger-text' : 'success-text'}>
                                     ₹{remainingBalance.toLocaleString()}
                                 </span>
                             </div>
 
-                            <button type="submit" className="btn-primary full-width generate-btn">
-                                <span>Save Bill</span>
+                            <button type="submit" className="btn-primary full-width generate-btn btn-large">
+                                💾 Save and Done
                             </button>
                         </div>
                     </div>

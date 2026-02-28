@@ -49,28 +49,27 @@ function VendorList({ onSelectVendor }) {
     return (
         <div className="vendor-list">
             <div className="list-header">
-                <h2>Vendors</h2>
+                <h2>🏪 Shops List</h2>
                 <div className="header-actions">
                     <input
-                        type="text"
-                        placeholder="Search by shop or phone..."
+                        type="search"
+                        placeholder="Search shop name..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         className="search-input"
                     />
-                    <button className="btn-primary" onClick={() => setShowAddModal(true)}>+ Add Vendor</button>
+                    <button className="btn-primary" onClick={() => setShowAddModal(true)}>➕ Add New Shop</button>
                 </div>
             </div>
 
-            <div className="glass table-container">
+            <div className="glass table-container desktop-only">
                 <table className="data-table">
                     <thead>
                         <tr>
                             <th>Shop Name</th>
-                            <th>Phone Number</th>
-                            <th>Address</th>
-                            <th>Pending Amount</th>
-                            <th>Action</th>
+                            <th>Phone</th>
+                            <th>Pending Money</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -78,31 +77,55 @@ function VendorList({ onSelectVendor }) {
                             <tr key={vendor.id}>
                                 <td>{vendor.shopName}</td>
                                 <td>{vendor.phone}</td>
-                                <td className="text-secondary">{vendor.address || 'N/A'}</td>
                                 <td className={vendor.pendingBalance > 0 ? 'text-danger font-bold' : 'text-success'}>
                                     ₹{vendor.pendingBalance.toLocaleString()}
                                 </td>
                                 <td>
                                     <div className="action-row">
-                                        <button className="btn-small glass" onClick={() => onSelectVendor(vendor.id)}>View Details</button>
+                                        <button className="btn-small glass" onClick={() => onSelectVendor(vendor.id)}>View</button>
                                         <button className="btn-small glass edit-btn" onClick={() => setEditingVendor(vendor)}>Edit</button>
-                                        <button className="btn-small glass delete-btn" onClick={() => handleDeleteVendor(vendor.id, vendor.shopName)}>Delete</button>
                                     </div>
                                 </td>
                             </tr>
                         )) : (
                             <tr>
-                                <td colSpan="5" style={{ textAlign: 'center', padding: '2rem' }}>No vendors found</td>
+                                <td colSpan="4" style={{ textAlign: 'center', padding: '2rem' }}>No shops found</td>
                             </tr>
                         )}
                     </tbody>
                 </table>
             </div>
 
+            {/* Mobile Card List */}
+            <div className="mobile-card-list mobile-only">
+                {filteredVendors.length > 0 ? filteredVendors.map(vendor => (
+                    <div key={vendor.id} className="mobile-row-card glass animate-fade" onClick={() => onSelectVendor(vendor.id)}>
+                        <div className="row-header">
+                            <span className="shop-title">🏪 {vendor.shopName}</span>
+                            <span className={vendor.pendingBalance > 0 ? 'text-danger' : 'text-success'}>
+                                ₹{vendor.pendingBalance.toLocaleString()}
+                            </span>
+                        </div>
+                        <div className="row-details">
+                            <span className="text-secondary">📞 {vendor.phone}</span>
+                            <span className="text-secondary" style={{ textAlign: 'right' }}>
+                                {vendor.pendingBalance > 0 ? 'Debt ⚠️' : 'Paid ✅'}
+                            </span>
+                        </div>
+                        <div className="card-actions" onClick={(e) => e.stopPropagation()}>
+                            <button className="btn-small glass" onClick={() => onSelectVendor(vendor.id)}>Open</button>
+                            <button className="btn-small glass edit-btn" onClick={() => setEditingVendor(vendor)}>Edit</button>
+                        </div>
+                    </div>
+                )) : (
+                    <div style={{ textAlign: 'center', padding: '3rem' }}>No shops yet. Add one!</div>
+                )}
+            </div>
+
             {showAddModal && (
                 <div className="modal-overlay">
                     <div className="modal-content glass animate-fade">
-                        <h3>Add New Vendor</h3>
+                        <h3>➕ Add New Shop</h3>
                         <form onSubmit={handleAddVendor}>
                             <div className="form-group">
                                 <label>Shop Name*</label>
@@ -180,109 +203,36 @@ function VendorList({ onSelectVendor }) {
             )}
 
             <style jsx>{`
-        .list-header {
+        .shop-title {
+          font-size: 1.1rem;
+          font-weight: 700;
+        }
+
+        .card-actions {
           display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 2rem;
-          flex-wrap: wrap;
-          gap: 1rem;
+          gap: 0.75rem;
+          margin-top: 1rem;
+          padding-top: 0.75rem;
+          border-top: 1px solid var(--glass-border);
+        }
+
+        .mobile-row-card {
+          cursor: pointer;
         }
 
         .header-actions {
           display: flex;
           gap: 1rem;
-          flex: 1;
-          justify-content: flex-end;
-          min-width: 300px;
-        }
-
-        .search-input {
-          flex: 1;
-          max-width: 400px;
-        }
-
-        .data-table {
           width: 100%;
-          border-collapse: collapse;
-          text-align: left;
         }
 
-        .data-table th, .data-table td {
-          padding: 1.25rem 1.5rem;
-          border-bottom: 1px solid var(--glass-border);
-        }
-
-        .data-table th {
-          font-weight: 600;
-          color: var(--text-secondary);
-        }
-
-        .text-secondary { color: var(--text-secondary); }
-        .text-danger { color: var(--danger-color); }
-        .text-success { color: var(--success-color); }
-        .font-bold { font-weight: 600; }
-
-        .modal-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(0, 0, 0, 0.7);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 1000;
-        }
-
-        .modal-content {
-          width: 90%;
-          max-width: 500px;
-          padding: 2rem;
-          border-radius: var(--radius);
-        }
-
-        .modal-content h3 {
-          margin-bottom: 1.5rem;
-        }
-
-        .form-group {
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-          margin-bottom: 1.25rem;
-        }
-
-        .form-group label {
-          font-size: 0.875rem;
-          color: var(--text-secondary);
-        }
-
-        .modal-actions {
-          display: flex;
-          justify-content: flex-end;
-          gap: 1rem;
-          margin-top: 2rem;
-        }
-
-        .action-row {
-          display: flex;
-          gap: 0.5rem;
-        }
-
-        .edit-btn:hover { background: rgba(56, 189, 248, 0.2); border-color: var(--accent-color); }
-        .delete-btn:hover { background: rgba(239, 68, 68, 0.2); border-color: var(--danger-color); color: var(--danger-color); }
-
-        .btn-secondary {
-          background: transparent;
-          color: var(--text-primary);
-          padding: 0.75rem 1.5rem;
-          border: 1px solid var(--glass-border);
-        }
-
-        .btn-secondary:hover {
-          background: var(--glass-bg);
+        @media (max-width: 768px) {
+          .header-actions {
+            flex-direction: column;
+          }
+          .search-input {
+            max-width: none;
+          }
         }
       `}</style>
         </div>

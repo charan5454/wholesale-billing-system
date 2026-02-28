@@ -30,7 +30,8 @@ function App() {
 
   return (
     <div className="app-container">
-      <nav className="glass sidebar">
+      {/* Sidebar - Desktop Only */}
+      <nav className="glass sidebar desktop-only">
         <div className="logo">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 11.5C7 11.5 7.5 7.5 8 5H16C16.5 7.5 17 11.5 17 11.5V20C17 21.1046 16.1046 22 15 22H9C7.89543 22 7 21.1046 7 20V11.5Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -44,23 +45,46 @@ function App() {
         </div>
         <ul className="nav-links">
           <li className={activeTab === 'dashboard' ? 'active' : ''} onClick={() => { setActiveTab('dashboard'); setViewingVendorId(null) }}>
-            Dashboard
+            <span>🏠 Home</span>
           </li>
           <li className={activeTab === 'shops' ? 'active' : ''} onClick={() => { setActiveTab('shops'); setViewingVendorId(null) }}>
-            Shops
+            <span>🏪 Shops</span>
           </li>
           <li className={activeTab === 'billing' ? 'active' : ''} onClick={() => { setActiveTab('billing'); setViewingVendorId(null) }}>
-            Generate Bill
+            <span>📝 New Bill</span>
           </li>
           <li className={activeTab === 'manage-products' ? 'active' : ''} onClick={() => { setActiveTab('manage-products'); setViewingVendorId(null) }}>
-            Manage Products
+            <span>📦 Items</span>
           </li>
         </ul>
       </nav>
 
+      {/* Bottom Navigation - Mobile Only */}
+      <nav className="bottom-nav mobile-only">
+        <div className={`nav-item ${activeTab === 'dashboard' ? 'active' : ''}`} onClick={() => { setActiveTab('dashboard'); setViewingVendorId(null) }}>
+          <span className="nav-icon">🏠</span>
+          <span>Home</span>
+        </div>
+        <div className={`nav-item ${activeTab === 'shops' ? 'active' : ''}`} onClick={() => { setActiveTab('shops'); setViewingVendorId(null) }}>
+          <span className="nav-icon">🏪</span>
+          <span>Shops</span>
+        </div>
+        <div className={`nav-item ${activeTab === 'billing' ? 'active' : ''}`} onClick={() => { setActiveTab('billing'); setViewingVendorId(null) }}>
+          <span className="nav-icon">📝</span>
+          <span>Bill</span>
+        </div>
+        <div className={`nav-item ${activeTab === 'manage-products' ? 'active' : ''}`} onClick={() => { setActiveTab('manage-products'); setViewingVendorId(null) }}>
+          <span className="nav-icon">📦</span>
+          <span>Items</span>
+        </div>
+      </nav>
+
       <main className="main-content">
         <header className="top-bar">
-          <div className="date">{new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>
+          <div className="date desktop-only">{new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>
+          <div className="mobile-only logo-small">
+            <h1>🥛 Dairy</h1>
+          </div>
           <div className="user-profile glass">
             Admin
           </div>
@@ -68,6 +92,8 @@ function App() {
         <div className="content-area animate-fade">
           {renderContent()}
         </div>
+        {/* Padding for mobile nav */}
+        <div className="mobile-only" style={{ height: '80px' }}></div>
       </main>
 
       <style jsx>{`
@@ -102,10 +128,6 @@ function App() {
           margin: 0;
         }
 
-        .logo span {
-          color: var(--accent-color);
-        }
-
         .nav-links {
           list-style: none;
           display: flex;
@@ -114,11 +136,14 @@ function App() {
         }
 
         .nav-links li {
-          padding: 0.75rem 1rem;
+          padding: 1rem;
           border-radius: var(--radius);
           cursor: pointer;
           transition: var(--transition);
           color: var(--text-secondary);
+          font-size: 1.1rem;
+          display: flex;
+          align-items: center;
         }
 
         .nav-links li:hover {
@@ -140,6 +165,11 @@ function App() {
           width: calc(100% - 220px);
         }
 
+        .logo-small h1 {
+          font-size: 1.5rem;
+          margin: 0;
+        }
+
         .top-bar {
           display: flex;
           justify-content: space-between;
@@ -153,42 +183,15 @@ function App() {
           font-weight: 500;
         }
 
-        .friend-mode-lock {
-          margin-top: auto;
-          padding: 1rem;
-          border-radius: var(--radius);
-        }
-
-        .status {
-          font-size: 0.8rem;
-          font-weight: 600;
-          text-align: center;
-        }
-
-        .status.success { color: var(--success-color); }
-
-        .lock-form {
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-        }
-
-        .lock-form input {
-          width: 100%;
-          padding: 0.5rem;
-          font-size: 0.8rem;
-        }
-
         @media (max-width: 768px) {
-          .sidebar {
-            width: 80px;
-            padding: 2rem 0.5rem;
-          }
-          .sidebar .logo h1, .sidebar .nav-links li span {
-            display: none;
-          }
           .main-content {
-            margin-left: 80px;
+            margin-left: 0;
+            padding: 1rem;
+            width: 100%;
+          }
+          
+          .top-bar {
+            margin-bottom: 1.5rem;
           }
         }
       `}</style>
