@@ -72,7 +72,7 @@ function App() {
           <div className="date-display">
             {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
           </div>
-          <div className="user-profile glass">Admin</div>
+          <div className="user-profile glass">Jatin</div>
         </header>
 
         {/* content area */}
